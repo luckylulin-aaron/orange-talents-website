@@ -1,0 +1,317 @@
+// ============================================
+// 样式增强补丁 - 更接近原网站
+// ============================================
+
+// 全局渐变背景优化
+.tabSection {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6F6F6 100%) !important;
+}
+
+// 增强卡片样式
+.card {
+  border-radius: 24px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  @media (max-width: 767px) {
+    border-radius: 16px !important;
+  }
+}
+
+// 城市卡片增强
+.cityCard {
+  padding: 14px 28px !important;
+  font-weight: 600 !important;
+  border-radius: 500px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+// 快速链接箭头动画增强
+.linkCard {
+  border-radius: 24px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+    
+    .arrow {
+      transform: translateX(12px) !important;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    border-radius: 16px !important;
+  }
+}
+
+// Section间距优化
+section {
+  &[class*="featuredJobs"],
+  &[class*="locationScroll"],
+  &[class*="freshContent"],
+  &[class*="quickLinks"] {
+    padding: 160px 0 !important;
+    
+    @media (max-width: 767px) {
+      padding: 80px 0 !important;
+    }
+  }
+}
+
+// 标题字重优化
+h1, h2, h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+// 按钮增强
+button {
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    transform: scale(1.02) !important;
+  }
+  
+  &:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+// 品牌绿色更新
+[class*="green"],
+.spotify-green {
+  background-color: #1ED760 !important;
+  color: #1ED760 !important;
+}
+
+// 表面蓝色更新
+[class*="surface-blue"],
+.bg-surface-blue {
+  background-color: #E3F2FD !important;
+}
+
+// 3D卡片翻转优化
+.flipCard {
+  perspective: 1200px !important;
+  
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+.flipCardInner {
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+}
+
+// 平滑滚动增强
+html {
+  scroll-behavior: smooth !important;
+}
+
+// 图片加载优化
+img {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+}
+
+// Tab切换动画优化
+[role="tab"] {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &[aria-selected="true"] {
+    font-weight: 700 !important;
+  }
+}
+
+// 输入框增强
+input, select, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:focus {
+    outline: 2px solid #1ED760 !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// 链接悬停效果
+a {
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    opacity: 0.8 !important;
+  }
+}
+
+// 导航下划线动画
+.navLink {
+  position: relative !important;
+  
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -4px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+    background: #1ED760 !important;
+    transition: width 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  }
+  
+  &:hover::after,
+  &.active::after {
+    width: 100% !important;
+  }
+}
+
+// 移动端菜单动画优化
+.mobileMenu {
+  transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &.open {
+    transform: translateX(0) !important;
+  }
+  
+  &.closed {
+    transform: translateX(100%) !important;
+  }
+}
+
+// 页脚唱片旋转优化
+.footerRecord {
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &:hover {
+    transform: rotate(180deg) !important;
+  }
+  
+  &.playing {
+    animation: spin 3s linear infinite !important;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 音频波形动画优化
+.waveBar {
+  transition: all 0.15s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  
+  &.playing {
+    animation: wave 0.8s ease-in-out infinite !important;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+// 滚动淡入动画
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) forwards !important;
+}
+
+// 加载骨架屏
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: loading 1.5s ease-in-out infinite !important;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// 响应式字体优化
+@media (max-width: 767px) {
+  h1 {
+    font-size: clamp(32px, 8vw, 48px) !important;
+  }
+  
+  h2 {
+    font-size: clamp(24px, 6vw, 36px) !important;
+  }
+  
+  h3 {
+    font-size: clamp(20px, 5vw, 28px) !important;
+  }
+  
+  body {
+    font-size: clamp(14px, 4vw, 16px) !important;
+  }
+}
+
+// 性能优化 - GPU加速
+.card,
+.flipCard,
+.cityCard,
+.linkCard {
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+}
+
+// 焦点可访问性
+*:focus-visible {
+  outline: 2px solid #1ED760 !important;
+  outline-offset: 2px !important;
+}
+
+// 减少运动偏好
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+

@@ -1,0 +1,13 @@
+# Fonts Directory
+
+Place Circular font files here if available:
+- Circular-Bold.woff2
+- Circular-Medium.woff2
+- Circular-Book.woff2
+
+These are Spotify's custom fonts and require a license.
+The app will fall back to system fonts if not available.
+
+
+
+

@@ -1,0 +1,259 @@
+@import './variables';
+
+// ============================================
+// 响应式断点混入
+// ============================================
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-mobile) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+// ============================================
+// 文字样式混入
+// ============================================
+@mixin display-1 {
+  font-size: $font-display-1;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-black;
+  
+  @include mobile {
+    font-size: 48px;
+  }
+}
+
+@mixin display-2 {
+  font-size: $font-display-2;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-bold;
+  
+  @include mobile {
+    font-size: 24px;
+  }
+}
+
+@mixin headline-1 {
+  font-size: $font-headline-1;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-bold;
+  
+  @include mobile {
+    font-size: 40px;
+  }
+}
+
+@mixin headline-2 {
+  font-size: $font-headline-2;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-bold;
+  
+  @include mobile {
+    font-size: 28px;
+  }
+}
+
+@mixin headline-3 {
+  font-size: $font-headline-3;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-bold;
+  
+  @include mobile {
+    font-size: 20px;
+  }
+}
+
+@mixin paragraph-2 {
+  font-size: $font-paragraph-2;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+  
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+@mixin paragraph-3 {
+  font-size: $font-paragraph-3;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+  
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+// ============================================
+// 布局混入
+// ============================================
+@mixin container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-l;
+  padding-right: $spacing-l;
+  
+  @include mobile {
+    padding-left: $spacing-mobile-m;
+    padding-right: $spacing-mobile-m;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ============================================
+// 动画混入
+// ============================================
+@mixin transition($property: all) {
+  transition: $property $transition-normal $easing-standard;
+}
+
+@mixin hover-lift {
+  transition: transform $transition-normal $easing-standard;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@mixin fade-in {
+  animation: fadeIn $transition-normal $easing-standard;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================
+// 3D Transform混入
+// ============================================
+@mixin preserve-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@mixin backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+// ============================================
+// 圆角混入
+// ============================================
+@mixin rounded {
+  border-radius: $radius-desktop;
+  
+  @include mobile {
+    border-radius: $radius-mobile;
+  }
+}
+
+@mixin rounded-full {
+  border-radius: $radius-button;
+}
+
+// ============================================
+// 按钮混入
+// ============================================
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+}
+
+@mixin link-reset {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+// ============================================
+// 滚动条样式
+// ============================================
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// ============================================
+// 隐藏元素
+// ============================================
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+
+

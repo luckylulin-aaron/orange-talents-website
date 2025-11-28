@@ -1,0 +1,85 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  position: relative;
+  background: #000;
+  padding: 160px 0 32px;
+  margin-top: 160px;
+
+  @include mobile {
+    padding: 120px 0 24px;
+    margin-top: 120px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.scrollButton {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+}
+
+.scrollBtn {
+  @include button-reset;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $color-white;
+  color: $color-black;
+  font-size: 24px;
+  transform: rotate(-90deg);
+  transition: all $transition-normal;
+
+  &:hover {
+    background: $color-spotify-green;
+    color: $color-white;
+    transform: rotate(-90deg) scale(1.1);
+  }
+}
+
+.note {
+  max-width: 560px;
+
+  h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.legalRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: auto;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity $transition-normal;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+

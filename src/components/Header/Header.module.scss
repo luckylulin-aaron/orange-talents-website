@@ -1,0 +1,273 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-sticky;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+}
+
+.container {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xl;
+  min-height: 83px;
+
+  @include mobile {
+    min-height: 72px;
+    gap: $spacing-mobile-m;
+  }
+}
+
+.brand {
+  @include link-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-s;
+  color: $color-black;
+  padding: 12px 20px 12px 14px;
+  border-radius: 999px;
+  background: $color-white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $color-white;
+  box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.logoImage {
+  object-fit: cover;
+}
+
+.brandText {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: 'Inter', $font-family;
+}
+
+.brandName {
+  font-size: calc(16px * 2 / 3);
+}
+
+.brandDivider {
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.brandTagline {
+  font-size: calc(12px * 2 / 3);
+  letter-spacing: 0.27em;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navDesktop {
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: $spacing-s;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  @include link-reset;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-s;
+  padding: 18px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: calc(15px * 2 / 3);
+  color: rgba(0, 0, 0, 0.7);
+  transition: all $transition-fast $easing-standard;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba(0, 0, 0, 0.25);
+    color: $color-black;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.navLabel {
+  font-weight: 600;
+}
+
+.navIcon {
+  color: #ff914d;
+}
+
+.actions {
+  display: none;
+
+  @include desktop {
+    display: flex;
+  }
+}
+
+.accountButton {
+  @include link-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: 12px 28px;
+  border-radius: 16px;
+  border: none;
+  background: #ff914d;
+  color: #2d1a0d;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: calc(15px * 2 / 3);
+  font-family: 'Inter', $font-family;
+  box-shadow: 0 14px 30px rgba(255, 145, 77, 0.45);
+
+  svg {
+    color: #2d1a0d;
+  }
+
+  &:hover {
+    background: #ff7a24;
+  }
+}
+
+.menuButton {
+  @include button-reset;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.08);
+  transition: background $transition-fast $easing-standard;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: $color-black;
+    border-radius: 1px;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.14);
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.mobileSheet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 82%);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateX(100%);
+  transition: transform $transition-slow $easing-standard;
+  z-index: $z-index-modal;
+  padding: $spacing-xl $spacing-l;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.mobileSheetVisible {
+  transform: translateX(0);
+}
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeButton {
+  @include button-reset;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  color: $color-black;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-l;
+}
+
+.mobileActions {
+  margin-top: $spacing-l;
+}
+
+.mobileLink {
+  @include link-reset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(18px * 2 / 3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.9);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mobileCta {
+  border: none;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: $z-index-modal - 1;
+
+  @include desktop {
+    display: none;
+  }
+}

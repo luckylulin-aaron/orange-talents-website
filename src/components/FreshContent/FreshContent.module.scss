@@ -1,0 +1,163 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.section {
+  padding: 80px 0;
+  
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiperSlide {
+  height: auto;
+  transition: all 0.5s $easing-standard;
+  
+  &.active {
+    flex: 1 1 auto;
+    min-width: 60%;
+    
+    @include mobile {
+      min-width: 100%;
+    }
+  }
+  
+  &.closed {
+    flex: 0 0 300px;
+    
+    @include mobile {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+.container {
+  padding: 40px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s $easing-standard;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  
+  &.white {
+    background: $color-white;
+    box-shadow: $shadow-md;
+  }
+  
+  &.violet {
+    background: $color-violet;
+    
+    * {
+      color: $color-white !important;
+    }
+  }
+  
+  &.active {
+    box-shadow: $shadow-lg;
+  }
+  
+  @include mobile {
+    padding: 24px;
+    min-height: 300px;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.text {
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.audioWaves {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 60px;
+  margin: 24px 0;
+}
+
+.wave {
+  width: 4px;
+  background: $color-black;
+  border-radius: 2px;
+  animation: wave 1.2s ease-in-out infinite;
+  
+  &:nth-child(1) {
+    height: 20px;
+    animation-delay: 0s;
+  }
+  
+  &:nth-child(2) {
+    height: 40px;
+    animation-delay: 0.1s;
+  }
+  
+  &:nth-child(3) {
+    height: 60px;
+    animation-delay: 0.2s;
+  }
+  
+  &:nth-child(4) {
+    height: 35px;
+    animation-delay: 0.3s;
+  }
+  
+  &:nth-child(5) {
+    height: 25px;
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+}
+
+.bottomLink {
+  margin-top: auto;
+}
+
+.linkText {
+  font-weight: $font-weight-bold;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width $transition-normal;
+  }
+  
+  .container:hover &::after {
+    width: 100%;
+  }
+}
+
+
+
+

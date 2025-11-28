@@ -1,0 +1,166 @@
+{
+  "heroJobs": [
+    {
+      "id": 1,
+      "category": "Content",
+      "title": "Analytics Engineer, Business Strategy & Insights",
+      "image": "/images/1000x1000/lp-hero-01-2000.jpg",
+      "link": "/jobs/analytics-engineer-business-strategy-insights"
+    },
+    {
+      "id": 2,
+      "category": "Support & Operations",
+      "title": "Associate Manager, Creative Operations",
+      "image": "/images/1000x1000/lp-hero-02-2000.jpg",
+      "link": "/jobs/associate-manager-creative-operations"
+    },
+    {
+      "id": 3,
+      "category": "Design",
+      "title": "Staff Designer, Core Experience, Playback Experiences",
+      "image": "/images/1000x1000/lp-hero-03-2000.jpg",
+      "link": "/jobs/staff-designer-core-experience-playback-experiences"
+    },
+    {
+      "id": 4,
+      "category": "Engineering",
+      "title": "Backend Engineer, S4A Music Policy",
+      "image": "/images/1000x1000/lp-hero-04-2000.jpg",
+      "link": "/jobs/backend-engineer-s4a-music-policy"
+    },
+    {
+      "id": 5,
+      "category": "Finance",
+      "title": "Payroll Specialist",
+      "image": "/images/1000x1000/lp-hero-05-2000.jpg",
+      "link": "/jobs/payroll-specialist"
+    },
+    {
+      "id": 6,
+      "category": "Content",
+      "title": "Analytics Engineer, Business Strategy & Insights",
+      "image": "/images/1000x1000/lp-hero-06-2000.jpg",
+      "link": "/jobs/analytics-engineer-business-strategy-insights"
+    },
+    {
+      "id": 7,
+      "category": "Support & Operations",
+      "title": "Associate Manager, Creative Operations",
+      "image": "/images/1000x1000/lp-hero-07-2000.jpg",
+      "link": "/jobs/associate-manager-creative-operations"
+    }
+  ],
+  "featuredJobs": [
+    {
+      "id": 1,
+      "category": "Insights",
+      "title": "Analytics Engineer, Business Strategy & Insights",
+      "description": "",
+      "link": "/jobs/analytics-engineer-business-strategy-insights"
+    },
+    {
+      "id": 2,
+      "category": "Opportunities",
+      "title": "Senior Scientist, Advanced Research and Technology Development",
+      "description": "",
+      "image": "/images/updated_images/2.chatting.jpg",
+      "link": "/jobs/senior-scientist-advanced-research"
+    },
+    {
+      "id": 3,
+      "category": "Opportunities",
+      "title": "Chief Architect, Internet Advertisement",
+      "description": "",
+      "image": "/images/updated_images/3.chatting2.jpg",
+      "link": "/jobs/chief-architect-internet-advertisement"
+    }
+  ],
+  "cities": [
+    {
+      "name": "Toronto",
+      "image": "/images/120x120/toronto-240.jpg",
+      "link": "/locations/toronto"
+    },
+    {
+      "name": "Sydney",
+      "image": "/images/120x120/sydney-240.jpg",
+      "link": "/locations/sydney"
+    },
+    {
+      "name": "São Paulo",
+      "image": "/images/120x120/sao-paulo-240.jpg",
+      "link": "/locations/sao-paulo"
+    },
+    {
+      "name": "Paris",
+      "image": "/images/120x120/paris-240.jpg",
+      "link": "/locations/paris"
+    },
+    {
+      "name": "Mumbai",
+      "image": "/images/120x120/mumbai-240.jpg",
+      "link": "/locations/mumbai"
+    },
+    {
+      "name": "Tokyo",
+      "image": "/images/120x120/tokyo-240.jpg",
+      "link": "/locations/tokyo"
+    },
+    {
+      "name": "Amsterdam",
+      "image": "/images/120x120/amsterdam-240.jpg",
+      "link": "/locations/amsterdam"
+    },
+    {
+      "name": "Brussels",
+      "image": "/images/120x120/brussels-240.jpg",
+      "link": "/locations/brussels"
+    },
+    {
+      "name": "Copenhagen",
+      "image": "/images/120x120/copenhagen-240.jpg",
+      "link": "/locations/copenhagen"
+    },
+    {
+      "name": "Berlin",
+      "image": "/images/120x120/berlin-240.jpg",
+      "link": "/locations/berlin"
+    },
+    {
+      "name": "Milan",
+      "image": "/images/120x120/milan-240.jpg",
+      "link": "/locations/milan"
+    },
+    {
+      "name": "Mexico City",
+      "image": "/images/120x120/mexico-city-240.jpg",
+      "link": "/locations/mexico-city"
+    }
+  ],
+  "podcasts": [
+    {
+      "id": 1,
+      "title": "NerdOut@Spotify, 31: ARM-ing ourselves with Google Axion, Part 1",
+      "link": "https://open.spotify.com/episode/4xh8SAsESqFStr27LIoXlA"
+    },
+    {
+      "id": 2,
+      "title": "NerdOut@Spotify, 30: Building AiKA: Spotify's AI Knowledge Assistant",
+      "link": "https://open.spotify.com/episode/"
+    },
+    {
+      "id": 3,
+      "title": "NerdOut@Spotify, 29: Deploying Our New Typeface: Spotify Mix",
+      "link": "https://open.spotify.com/episode/"
+    },
+    {
+      "id": 4,
+      "title": "NerdOut@Spotify, 28: The CNCF Turns 10",
+      "link": "https://open.spotify.com/episode/"
+    }
+  ]
+}
+
+
+
+

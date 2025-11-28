@@ -1,0 +1,200 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.hero {
+  margin-top: 96px;
+  padding: 160px 0 96px;
+  position: relative;
+
+  @include mobile {
+    margin-top: 72px;
+    padding: 120px 0 64px;
+  }
+}
+
+.heroInner {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(320px, 52%, 690px) minmax(340px, 1fr);
+  gap: $spacing-xxl;
+  background: #525b59;
+  border-radius: 32px;
+  padding: 88px $spacing-xxxl $spacing-xxxl 150px;
+  overflow: hidden;
+  color: #f4f4f6;
+  min-height: 620px;
+  box-shadow: 0 48px 120px rgba(0, 0, 0, 0.45);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    padding: $spacing-xl $spacing-mobile-l $spacing-xxl;
+    min-height: unset;
+    border-radius: 24px;
+  }
+}
+
+.texture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.04) 2px, transparent 0),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.04) 2px, transparent 0);
+  background-size: 140px 140px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wordTexture {
+  position: absolute;
+  inset: 32px 32px;
+  background-image: url('/images/patterns/word_texture.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+
+  @include mobile {
+    inset: 24px;
+    opacity: 0.22;
+  }
+}
+
+.accent {
+  position: absolute;
+  top: 96px;
+  left: 118px;
+  width: 18px;
+  height: 402px;
+  border-radius: 12px;
+  background: #fad355;
+  box-shadow: 0 0 32px rgba(250, 211, 85, 0.55);
+  z-index: 2;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-m;
+  z-index: 1;
+  padding-left: 64px;
+  padding-right: $spacing-xl;
+  z-index: 3;
+
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.kicker {
+  font-size: 16px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(244, 244, 246, 0.75);
+  font-family: 'Inter', $font-family;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Inter', $font-family;
+  letter-spacing: -0.01em;
+
+  @include mobile {
+    font-size: 40px;
+  }
+}
+
+.body {
+  color: rgba(244, 244, 246, 0.9);
+  line-height: 1.6;
+  font-size: 18px;
+  max-width: 604px;
+  font-family: 'Inter', $font-family;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-l;
+  margin-top: $spacing-m;
+}
+
+.primaryCta,
+.secondaryCta {
+  @include link-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Inter', $font-family;
+}
+
+.primaryCta {
+  background: #ff914d;
+  color: #2d1a0d;
+  border: 1px solid #ff914d;
+}
+
+.secondaryCta {
+  border: 1px solid #ff914d;
+  color: #ff914d;
+  background: transparent;
+}
+
+.visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    order: -1;
+  }
+}
+
+.portraitFrame {
+  position: relative;
+  width: 100%;
+  min-height: 560px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 55%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), transparent 60%);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+
+  @include mobile {
+    min-height: 360px;
+  }
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: 35% 15%;
+  transition: transform $transition-slow $easing-standard;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}

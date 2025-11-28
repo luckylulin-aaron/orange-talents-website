@@ -1,0 +1,128 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.section {
+  padding: 80px 0;
+  
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.title {
+  color: rgb(255, 255, 255) !important; // 标题白色文字
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 16px 40px;
+  background: transparent; // 移除背景
+  border-radius: 0; // 移除圆角
+  text-decoration: none;
+  transition: all $transition-normal;
+  
+  span {
+    font-weight: $font-weight-bold;
+  }
+  
+  &:hover {
+    transform: translateX(8px);
+    
+    .arrowRight {
+      transform: translateX(8px);
+      opacity: 1;
+    }
+    
+    .arrowLeft {
+      transform: translateX(8px);
+      opacity: 0;
+    }
+  }
+  
+  @include mobile {
+    padding: 16px 20px;
+  }
+}
+
+.text {
+  color: rgb(255, 255, 255) !important; // 白色文本
+  font-weight: 300;
+  
+  span {
+    font-weight: 700; // 加粗部分
+  }
+}
+
+.button {
+  width: 64px; // 增大按钮
+  height: 64px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #ff914d; // 品牌橙色背景
+  
+  @include mobile {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.arrowWrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  transition: all $transition-normal;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: $color-black; // 黑色箭头
+  }
+  
+  // 箭头杆
+  &::before {
+    width: 12px;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  // 箭头头
+  &::after {
+    width: 8px;
+    height: 8px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border-top: 2px solid $color-black;
+    border-right: 2px solid $color-black;
+    background: transparent;
+  }
+}
+
+.arrowLeft {
+  opacity: 1;
+}
+
+.arrowRight {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateX(-8px);
+}

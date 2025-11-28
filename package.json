@@ -1,0 +1,29 @@
+{
+  "name": "spotify-careers-clone",
+  "version": "1.0.0",
+  "description": "A pixel-perfect clone of Spotify's Life at Spotify recruitment website",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swiper": "^11.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "sass": "^1.69.7",
+    "typescript": "^5.3.3"
+  }
+}
+
+
+
+

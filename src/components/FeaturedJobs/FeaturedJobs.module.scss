@@ -1,0 +1,146 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.section {
+  padding: 80px 0;
+  
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiperSlide {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+  transition: all 0.5s $easing-standard;
+  
+  &.active {
+    flex: 1 1 auto;
+    min-width: 60%;
+    
+    @include mobile {
+      min-width: 100%;
+    }
+  }
+  
+  &.closed {
+    flex: 0 0 300px;
+    
+    @include mobile {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+.container {
+  padding: 40px;
+  min-height: 420px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s $easing-standard;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  &.white {
+    background: $color-white;
+    box-shadow: $shadow-md;
+  }
+  
+  &.imageCard {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    
+    * {
+      color: $color-white !important;
+    }
+  }
+  
+  &.active {
+    &.white {
+      box-shadow: $shadow-lg;
+    }
+  }
+  
+  &.closed {
+    &.imageCard {
+      * {
+        color: $color-white !important;
+      }
+    }
+  }
+  
+  @include mobile {
+    padding: 24px;
+    min-height: 300px;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.category {
+  font-weight: $font-weight-bold;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.text {
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.jobApply {
+  margin-top: auto;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: $color-black;
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+  transition: all $transition-normal;
+  position: relative;
+  
+  &::after {
+    content: '→';
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform $transition-normal;
+  }
+  
+  &:hover::after {
+    transform: translateX(4px);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width $transition-normal;
+  }
+  
+  &:hover::before {
+    width: calc(100% - 32px);
+  }
+}
+
