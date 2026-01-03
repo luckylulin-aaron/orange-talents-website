@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/common/NoLink'
 import styles from './LocationScroll.module.scss'
 import jobsData from '@/data/jobs.json'
 

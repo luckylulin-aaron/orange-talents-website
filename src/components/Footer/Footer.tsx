@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/common/NoLink'
 import styles from './Footer.module.scss'
 
 const Footer = () => {
@@ -29,23 +29,21 @@ const Footer = () => {
           <Link className={styles.legalLink} href="/">
             © 2025 Orange Talents.
           </Link>
-          <a className={styles.legalLink} target="_blank" rel="noreferrer" href="https://www.spotify.com/legal/">
+          <Link className={styles.legalLink} href="https://www.spotify.com/legal/">
             Legal
-          </a>
-          <a className={styles.legalLink} target="_blank" rel="noreferrer" href="https://www.spotify.com/privacy/">
+          </Link>
+          <Link className={styles.legalLink} href="https://www.spotify.com/privacy/">
             Privacy center
-          </a>
+          </Link>
           <Link className={styles.legalLink} href="/candidate-privacy-policy">
             Privacy policy
           </Link>
-          <a
+          <Link
             className={styles.legalLink}
-            target="_blank"
-            rel="noreferrer"
             href="https://www.spotify.com/legal/privacy-policy/"
           >
             About ads
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
