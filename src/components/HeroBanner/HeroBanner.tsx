@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/common/NoLink'
 import Image from 'next/image'
 import ArrowIcon from '@/components/common/ArrowIcon'
 import styles from './HeroBanner.module.scss'

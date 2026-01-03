@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/common/NoLink'
 import styles from './QuickLinks.module.scss'
 
 const QuickLinks = () => {

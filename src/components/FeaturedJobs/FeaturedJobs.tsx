@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import Link from '@/components/common/NoLink'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import styles from './FeaturedJobs.module.scss'
