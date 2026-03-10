@@ -1,0 +1,39 @@
+{
+  "featured": [
+    {
+      "id": "china-linked-talent-trends",
+      "title": "What we see in China-linked talent moves",
+      "date": "2026-03-01",
+      "tags": ["Talent", "China-linked"],
+      "summary": "Three simple observations from recent cross-border hiring conversations between China and the world.",
+      "readingTime": "4 min read"
+    }
+  ],
+  "all": [
+    {
+      "id": "china-linked-talent-trends",
+      "title": "What we see in China-linked talent moves",
+      "date": "2026-03-01",
+      "tags": ["Talent", "China-linked"],
+      "summary": "Three simple observations from recent cross-border hiring conversations between China and the world.",
+      "readingTime": "4 min read"
+    },
+    {
+      "id": "working-with-growth-minded-employers",
+      "title": "Working with growth-minded employers",
+      "date": "2026-02-10",
+      "tags": ["Employers"],
+      "summary": "How we partner with founders and HR leaders who care about long-term, shared growth with their teams.",
+      "readingTime": "3 min read"
+    },
+    {
+      "id": "careers-at-cross-border-agencies",
+      "title": "What a career at a cross-border recruitment agency looks like",
+      "date": "2026-01-15",
+      "tags": ["Career", "Go-global"],
+      "summary": "A quick look at the skills and experiences you build by working with cross-border clients and candidates.",
+      "readingTime": "5 min read"
+    }
+  ]
+}
+

@@ -55,12 +55,8 @@
   }
   
   &.imageCard {
-    background-color: rgba(0, 0, 0, 0.3);
-    background-blend-mode: multiply;
-    
-    * {
-      color: $color-white !important;
-    }
+    background: linear-gradient(135deg, #f5f7fb 0%, #e4ecf9 50%, #d7e3ff 100%);
+    background-blend-mode: normal;
   }
   
   &.active {
