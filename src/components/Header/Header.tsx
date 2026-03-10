@@ -20,9 +20,14 @@ const navItems: NavItem[] = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAccountOpen, setIsAccountOpen] = useState(false)
+
+  const isLoggedIn = false
 
   const handleToggleMenu = () => setIsMenuOpen((previous) => !previous)
   const handleCloseMenu = () => setIsMenuOpen(false)
+  const handleToggleAccount = () => setIsAccountOpen((previous) => !previous)
+  const handleCloseAccount = () => setIsAccountOpen(false)
 
   const renderBrand = () => (
     <Link href="/" className={styles.brand} aria-label="Orange Talents home">
@@ -44,11 +49,62 @@ const Header = () => {
     </Link>
   )
 
-  const renderAccountButton = () => (
-    <Link href="/account" className={styles.accountButton}>
-      <span>My Account</span>
-      <ArrowIcon size={18} />
-    </Link>
+  const renderAccountMenu = () => (
+    <div className={styles.accountMenu}>
+      <button
+        type="button"
+        className={styles.accountButton}
+        aria-haspopup="menu"
+        aria-expanded={isAccountOpen}
+        onClick={handleToggleAccount}
+      >
+        <span>My Account</span>
+        <ArrowIcon size={18} />
+      </button>
+      {isAccountOpen && (
+        <div className={styles.accountDropdown} role="menu">
+          {isLoggedIn ? (
+            <>
+              <p className={styles.accountSectionTitle}>Signed in</p>
+              <Link href="/account/profile" className={styles.accountLinkPrimary} onClick={handleCloseAccount}>
+                View profile
+              </Link>
+              <Link href="/account/applications" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Applications
+              </Link>
+              <Link href="/account/saved-jobs" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Saved jobs
+              </Link>
+              <div className={styles.accountDivider} />
+              <Link href="/account/settings" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Account settings
+              </Link>
+              <button type="button" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <p className={styles.accountSectionTitle}>For candidates</p>
+              <Link href="/account/sign-in" className={styles.accountLinkPrimary} onClick={handleCloseAccount}>
+                Sign in
+              </Link>
+              <Link href="/account/sign-up" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Create account
+              </Link>
+              <div className={styles.accountDivider} />
+              <p className={styles.accountSectionTitle}>Quick links</p>
+              <Link href="/join-us" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Careers at Orange Talents
+              </Link>
+              <Link href="/jobs" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+                Search open roles
+              </Link>
+            </>
+          )}
+        </div>
+      )}
+    </div>
   )
 
   return (
@@ -70,7 +126,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className={styles.actions}>{renderAccountButton()}</div>
+          <div className={styles.actions}>{renderAccountMenu()}</div>
 
           <button
             type="button"
@@ -105,7 +161,12 @@ const Header = () => {
               <ArrowIcon size={18} />
             </Link>
           ))}
-          <div className={styles.mobileActions}>{renderAccountButton()}</div>
+          <div className={styles.mobileActions}>
+            <Link href="/account" className={`${styles.accountButton} ${styles.mobileCta}`} onClick={handleCloseMenu}>
+              <span>My Account</span>
+              <ArrowIcon size={18} />
+            </Link>
+          </div>
         </nav>
       </div>
 

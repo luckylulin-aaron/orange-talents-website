@@ -10,19 +10,27 @@
 - ⚡ **高性能** - Next.js 14 + React 18 + TypeScript
 - 🎯 **核心功能** - 完整实现3D Coverflow轮播效果
 
-## 🚀 快速开始
+## 🚀 快速开始（前端 + 后端）
 
 ```bash
-# 安装依赖
+# 1. 安装依赖
 npm install
 
-# 启动开发服务器
+# 2. 配置环境变量（本地开发）
+cp .env.example .env.local   # 如果存在示例文件，可按需调整
+
+# 至少需要设置：
+# DATABASE_URL=postgres://username:password@localhost:5432/orange_talents
+# JWT_SECRET=一个足够随机的长字符串
+
+# 3. 启动开发服务器（Next.js 前端 + API 后端）
 npm run dev
 
-# 访问 http://localhost:3000
+# 4. 访问应用
+# 前端与 API 共用同一进程，默认 http://localhost:3000
 ```
 
-就这么简单！所有图片资源已下载到本地，开箱即用。
+就这么简单！所有静态资源与基础后端接口开箱即用。
 
 ## 🎬 核心功能展示
 
@@ -222,7 +230,7 @@ $color-surface-blue: #B8E0FF;   // 改成你的辅助色
 ## 🔧 开发命令
 
 ```bash
-# 开发模式（热重载）
+# 开发模式（前端 + API 热重载）
 npm run dev
 
 # 构建生产版本
@@ -234,6 +242,46 @@ npm start
 # 代码检查
 npm run lint
 ```
+
+### 🗄 后端（账号系统）说明
+
+- 本仓库内置一个**简单账号后端**，使用：
+  - **PostgreSQL** 作为数据库（可以复用你在同一台 EC2 上的 PostgreSQL 实例）
+  - **Next.js App Router API Routes** 作为后端接口（无需单独起第二个 Node 进程）
+  - **`pg` + `bcryptjs` + `jsonwebtoken`** 做数据库访问、密码加密和 Cookie JWT 登录状态
+- 核心文件：
+  - 数据库连接：`src/lib/db.ts`
+  - 认证工具：`src/lib/auth.ts`
+  - 数据表结构：`db/schema.sql`（`accounts` 表，用于存储用户邮箱、密码哈希和姓名）
+  - API 路由：
+    - `POST /api/auth/register` - 注册账号（写入 `accounts` 表并设置登录 Cookie）
+    - `POST /api/auth/login` - 登录（校验密码并设置登录 Cookie）
+    - `GET  /api/auth/me` - 获取当前登录用户信息
+    - `POST /api/auth/logout` - 登出（清除登录 Cookie）
+
+#### 在 EC2 上部署时的建议
+
+1. **在同一台 EC2 上安装并运行 PostgreSQL**（或使用已有实例），建库后执行：
+
+```bash
+psql "$DATABASE_URL" -f db/schema.sql
+```
+
+2. 在你的进程管理 / 环境配置中设置至少两个环境变量：
+
+```bash
+DATABASE_URL=postgres://username:password@localhost:5432/orange_talents
+JWT_SECRET=请填入一个长度较长、随机的密钥字符串
+```
+
+3. 生产环境启动命令仍然是：
+
+```bash
+npm run build
+npm start
+```
+
+Next.js 会同时提供前端页面和 `/api/auth/*` 的后端接口，无需额外起独立后端服务。
 
 ## 📱 浏览器支持
 

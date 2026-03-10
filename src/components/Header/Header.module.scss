@@ -135,8 +135,12 @@
   }
 }
 
+.accountMenu {
+  position: relative;
+}
+
 .accountButton {
-  @include link-reset;
+  @include button-reset;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -160,6 +164,48 @@
   &:hover {
     background: #ff7a24;
   }
+}
+
+.accountDropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  width: 260px;
+  padding: 16px 16px 12px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: $shadow-lg;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.accountSectionTitle {
+  font-size: $font-detail-3;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: $color-text-secondary;
+  margin-bottom: 8px;
+}
+
+.accountLinkPrimary {
+  @include link-reset;
+  display: block;
+  padding: 8px 0;
+  font-size: $font-body-1;
+  font-weight: $font-weight-bold;
+}
+
+.accountLinkSecondary {
+  @include link-reset;
+  display: block;
+  padding: 6px 0;
+  font-size: $font-detail-3;
+  color: $color-text-secondary;
+}
+
+.accountDivider {
+  height: 1px;
+  margin: 8px 0;
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .menuButton {
