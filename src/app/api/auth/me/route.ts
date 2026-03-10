@@ -12,10 +12,7 @@ export async function GET(request: NextRequest) {
 
     const payload = verifyToken<{ userId: number }>(token)
 
-    const result = await query<{ id: number; email: string; name: string | null }>(
-      'SELECT id, email, name FROM accounts WHERE id = $1',
-      [payload.userId],
-    )
+    const result = await query('SELECT id, email, name FROM accounts WHERE id = $1', [payload.userId])
 
     if (result.rowCount === 0) {
       return NextResponse.json({ user: null }, { status: 200 })
