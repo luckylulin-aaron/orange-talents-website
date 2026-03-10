@@ -2,77 +2,20 @@
   "heroJobs": [
     {
       "id": 1,
-      "category": "Content",
-      "title": "Analytics Engineer, Business Strategy & Insights",
-      "image": "/images/1000x1000/lp-hero-01-2000.jpg",
-      "link": "/jobs/analytics-engineer-business-strategy-insights"
-    },
-    {
-      "id": 2,
-      "category": "Support & Operations",
-      "title": "Associate Manager, Creative Operations",
-      "image": "/images/1000x1000/lp-hero-02-2000.jpg",
-      "link": "/jobs/associate-manager-creative-operations"
-    },
-    {
-      "id": 3,
-      "category": "Design",
-      "title": "Staff Designer, Core Experience, Playback Experiences",
-      "image": "/images/1000x1000/lp-hero-03-2000.jpg",
-      "link": "/jobs/staff-designer-core-experience-playback-experiences"
-    },
-    {
-      "id": 4,
-      "category": "Engineering",
-      "title": "Backend Engineer, S4A Music Policy",
-      "image": "/images/1000x1000/lp-hero-04-2000.jpg",
-      "link": "/jobs/backend-engineer-s4a-music-policy"
-    },
-    {
-      "id": 5,
-      "category": "Finance",
-      "title": "Payroll Specialist",
-      "image": "/images/1000x1000/lp-hero-05-2000.jpg",
-      "link": "/jobs/payroll-specialist"
-    },
-    {
-      "id": 6,
-      "category": "Content",
-      "title": "Analytics Engineer, Business Strategy & Insights",
-      "image": "/images/1000x1000/lp-hero-06-2000.jpg",
-      "link": "/jobs/analytics-engineer-business-strategy-insights"
-    },
-    {
-      "id": 7,
-      "category": "Support & Operations",
-      "title": "Associate Manager, Creative Operations",
-      "image": "/images/1000x1000/lp-hero-07-2000.jpg",
-      "link": "/jobs/associate-manager-creative-operations"
+      "category": "Opportunities",
+      "title": "Recruiting Analyst",
+      "image": "/images/updated_images/1.partnership.jpg",
+      "link": "/jobs/recruiting-analyst"
     }
   ],
   "featuredJobs": [
     {
       "id": 1,
-      "category": "Insights",
-      "title": "Analytics Engineer, Business Strategy & Insights",
-      "description": "",
-      "link": "/jobs/analytics-engineer-business-strategy-insights"
-    },
-    {
-      "id": 2,
       "category": "Opportunities",
-      "title": "Senior Scientist, Advanced Research and Technology Development",
+      "title": "Recruiting Analyst",
       "description": "",
-      "image": "/images/updated_images/2.chatting.jpg",
-      "link": "/jobs/senior-scientist-advanced-research"
-    },
-    {
-      "id": 3,
-      "category": "Opportunities",
-      "title": "Chief Architect, Internet Advertisement",
-      "description": "",
-      "image": "/images/updated_images/3.chatting2.jpg",
-      "link": "/jobs/chief-architect-internet-advertisement"
+      "image": "/images/updated_images/1.partnership.jpg",
+      "link": "/jobs/recruiting-analyst"
     }
   ],
   "cities": [

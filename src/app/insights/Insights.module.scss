@@ -1,0 +1,156 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.hero {
+  padding: 120px 0 72px;
+  background: radial-gradient(circle at top left, #2a2a2a, #000000);
+  color: $color-white;
+
+  @include mobile {
+    padding: 96px 0 56px;
+  }
+}
+
+.heroInner {
+  @include container;
+  max-width: 960px;
+}
+
+.eyebrow {
+  font-size: $font-detail-3;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: $spacing-xs;
+}
+
+.title {
+  @include headline-2;
+  margin-bottom: $spacing-s;
+}
+
+.subtitle {
+  @include paragraph-2;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
+}
+
+.filters {
+  margin-top: $spacing-m;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.filterButton {
+  @include button-reset;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: $font-detail-3;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  @include transition(background-color);
+
+  &.active {
+    background: $color-white;
+    color: $color-black;
+  }
+}
+
+.section {
+  padding: 56px 0 80px;
+  background: #f7f7f7;
+}
+
+.sectionInner {
+  @include container;
+}
+
+.sectionTitle {
+  @include headline-3;
+  margin-bottom: $spacing-m;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: $spacing-m;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featuredCard {
+  padding: $spacing-l;
+  border-radius: $radius-desktop;
+  background: #ffffff;
+  box-shadow: $shadow-lg;
+}
+
+.featuredMeta {
+  font-size: $font-detail-3;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.featuredTitle {
+  @include headline-3;
+  margin-bottom: $spacing-xs;
+}
+
+.featuredSummary {
+  @include paragraph-3;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-s;
+}
+
+.featuredLink {
+  font-size: $font-detail-3;
+  font-weight: $font-weight-bold;
+}
+
+.listGrid {
+  margin-top: $spacing-l;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $spacing-m;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: $spacing-m;
+  border-radius: $radius-desktop;
+  background: #ffffff;
+  box-shadow: $shadow-md;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardMeta {
+  font-size: $font-detail-3;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.cardTitle {
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-xs;
+}
+
+.cardSummary {
+  @include paragraph-3;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-s;
+}
+
+.cardLink {
+  margin-top: auto;
+  font-size: $font-detail-3;
+  font-weight: $font-weight-bold;
+}
+
