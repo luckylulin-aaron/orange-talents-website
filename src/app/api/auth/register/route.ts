@@ -10,14 +10,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 })
     }
 
-    const existing = await query<{ id: number }>('SELECT id FROM accounts WHERE email = $1', [email])
+    const existing = await query('SELECT id FROM accounts WHERE email = $1', [email])
     if (existing.rowCount && existing.rowCount > 0) {
       return NextResponse.json({ error: 'Account with this email already exists.' }, { status: 409 })
     }
 
     const passwordHash = await hashPassword(password)
 
-    const result = await query<{ id: number; email: string }>(
+    const result = await query(
       `INSERT INTO accounts (email, password_hash, name)
        VALUES ($1, $2, $3)
        RETURNING id, email`,

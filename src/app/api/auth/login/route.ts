@@ -10,10 +10,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 })
     }
 
-    const result = await query<{ id: number; email: string; password_hash: string }>(
-      'SELECT id, email, password_hash FROM accounts WHERE email = $1',
-      [email],
-    )
+    const result = await query('SELECT id, email, password_hash FROM accounts WHERE email = $1', [email])
 
     if (result.rowCount === 0) {
       return NextResponse.json({ error: 'Invalid email or password.' }, { status: 401 })
