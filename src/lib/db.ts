@@ -22,8 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
   global.pgPool = pool
 }
 
-export async function query<T = any>(text: string, params?: any[]) {
-  const result = await pool.query<T>(text, params)
+export async function query(text: string, params?: any[]) {
+  const result = await pool.query(text, params)
   return result
 }
 
