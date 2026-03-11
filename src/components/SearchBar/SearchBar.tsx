@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import styles from './SearchBar.module.scss'
 
 type SearchBarProps = {
@@ -13,10 +14,13 @@ type SearchBarProps = {
 
 const SearchBar = ({ className = '', isElevated = true, align = 'center' }: SearchBarProps = {}) => {
   const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
 
   const handleSearch = (event: FormEvent<HTMLFormElement> | FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('Searching for:', searchQuery)
+    const query = searchQuery.trim()
+    const url = query.length > 0 ? `/jobs?query=${encodeURIComponent(query)}` : '/jobs'
+    router.push(url)
   }
 
   return (

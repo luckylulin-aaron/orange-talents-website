@@ -1,0 +1,81 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.section {
+  padding: 120px 0 80px;
+
+  @include mobile {
+    padding: 96px 0 56px;
+  }
+}
+
+.card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 28px 20px;
+  border-radius: $radius-desktop;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: $shadow-lg;
+}
+
+.title {
+  margin-bottom: $spacing-s;
+}
+
+.text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: $spacing-m;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-s;
+}
+
+.label {
+  display: block;
+  font-size: $font-detail-3;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: $spacing-xxs;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: $radius-small;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: $font-body-1;
+  background: rgba(0, 0, 0, 0.25);
+  color: $color-white;
+}
+
+.submit {
+  @include button-reset;
+  @include rounded-full;
+  padding: 10px 24px;
+  background: $color-spotify-green;
+  color: $color-black;
+  font-weight: $font-weight-bold;
+  font-size: $font-body-1;
+}
+
+.error {
+  margin-top: $spacing-xs;
+  font-size: $font-detail-3;
+  color: #ffb4a2;
+}
+
+.hintRow {
+  margin-top: $spacing-s;
+  font-size: $font-detail-3;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hintLink {
+  font-weight: $font-weight-bold;
+}
+
