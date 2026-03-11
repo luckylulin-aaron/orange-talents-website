@@ -77,4 +77,3 @@ export default function JobsPage({ searchParams }: JobsPageProps) {
     </div>
   )
 }
-
