@@ -1,19 +1,21 @@
- 'use client'
-
 import Header from '@/components/Header/Header'
 import HeroSearch from '@/components/HeroSearch/HeroSearch'
 import Footer from '@/components/Footer/Footer'
 import Link from 'next/link'
- import { useSearchParams } from 'next/navigation'
 import jobsData from '@/data/jobs.json'
 
 function normalize(text: string) {
   return text.toLowerCase().trim()
 }
 
-export default function JobsPage() {
-  const searchParams = useSearchParams()
-  const rawQuery = searchParams.get('query') ?? ''
+type JobsPageProps = {
+  searchParams?: {
+    query?: string
+  }
+}
+
+export default function JobsPage({ searchParams }: JobsPageProps) {
+  const rawQuery = searchParams?.query ?? ''
   const query = normalize(rawQuery)
 
   const allJobs = [...jobsData.featuredJobs, ...jobsData.heroJobs].filter(
