@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import ArrowIcon from '@/components/common/ArrowIcon'
 import styles from './Header.module.scss'
 
@@ -22,24 +21,31 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isAccountOpen, setIsAccountOpen] = useState(false)
 
-  const isLoggedIn = false
+  const [user, setUser] = useState<{ id: number; email: string; name: string | null } | null>(null)
+  const isLoggedIn = Boolean(user)
 
   const handleToggleMenu = () => setIsMenuOpen((previous) => !previous)
   const handleCloseMenu = () => setIsMenuOpen(false)
   const handleToggleAccount = () => setIsAccountOpen((previous) => !previous)
   const handleCloseAccount = () => setIsAccountOpen(false)
 
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then((res) => res.json())
+      .then((data) => setUser(data?.user ?? null))
+      .catch(() => setUser(null))
+  }, [])
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => null)
+    setUser(null)
+    handleCloseAccount()
+  }
+
   const renderBrand = () => (
     <Link href="/" className={styles.brand} aria-label="Orange Talents home">
       <span className={styles.logo} aria-hidden>
-        <Image
-          src="/images/updated_images/orangetalents_logo.jpg"
-          alt="Orange Talents logo"
-          fill
-          sizes="40px"
-          className={styles.logoImage}
-          priority
-        />
+        <img src="/images/updated_images/orangetalents_logo.jpg" alt="" className={styles.logoImage} />
       </span>
       <span className={styles.brandText}>
         <span className={styles.brandName}>Orange Talents</span>
@@ -66,6 +72,9 @@ const Header = () => {
           {isLoggedIn ? (
             <>
               <p className={styles.accountSectionTitle}>Signed in</p>
+              <p className={styles.accountLinkSecondary} style={{ paddingTop: 0 }}>
+                {user?.email}
+              </p>
               <Link href="/account/profile" className={styles.accountLinkPrimary} onClick={handleCloseAccount}>
                 View profile
               </Link>
@@ -79,7 +88,7 @@ const Header = () => {
               <Link href="/account/settings" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
                 Account settings
               </Link>
-              <button type="button" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
+              <button type="button" className={styles.accountLinkSecondary} onClick={handleLogout}>
                 Log out
               </button>
             </>

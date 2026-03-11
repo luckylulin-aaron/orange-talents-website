@@ -17,6 +17,7 @@ const ArrowIcon = ({ direction = 'right', size = 20, className = '' }: ArrowIcon
       viewBox="0 0 24 24"
       role="img"
       aria-hidden="true"
+      suppressHydrationWarning
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       <path
@@ -26,6 +27,7 @@ const ArrowIcon = ({ direction = 'right', size = 20, className = '' }: ArrowIcon
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        suppressHydrationWarning
       />
     </svg>
   )
