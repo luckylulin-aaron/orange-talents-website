@@ -71,6 +71,10 @@
   padding: 72px 0 40px;
   background: #f7f7f7;
 
+  &[id='how-we-work'] {
+    scroll-margin-top: 80px; /* account for fixed header */
+  }
+
   @include mobile {
     padding: 56px 0 32px;
   }

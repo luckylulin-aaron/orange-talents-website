@@ -1,0 +1,21 @@
+nohup: ignoring input
+
+> spotify-careers-clone@1.0.0 start
+> next start
+
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 298ms
+Error: Failed to find Server Action "x". This request might be from an older or newer deployment. Original error: Cannot read properties of undefined (reading 'workers')
+    at rT (/home/ec2-user/orange-talents-website/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:1766)
+    at /home/ec2-user/orange-talents-website/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:303
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async rE (/home/ec2-user/orange-talents-website/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:15:8146)
+    at async r7 (/home/ec2-user/orange-talents-website/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:18:1144)
+    at async doRender (/home/ec2-user/orange-talents-website/node_modules/next/dist/server/base-server.js:1427:30)
+    at async cacheEntry.responseCache.get.routeKind (/home/ec2-user/orange-talents-website/node_modules/next/dist/server/base-server.js:1588:28)
+    at async NextNodeServer.renderToResponseWithComponentsImpl (/home/ec2-user/orange-talents-website/node_modules/next/dist/server/base-server.js:1496:28)
+    at async NextNodeServer.renderPageComponent (/home/ec2-user/orange-talents-website/node_modules/next/dist/server/base-server.js:1924:24)
+    at async NextNodeServer.renderToResponseImpl (/home/ec2-user/orange-talents-website/node_modules/next/dist/server/base-server.js:1962:32)

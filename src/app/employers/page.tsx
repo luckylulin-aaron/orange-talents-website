@@ -20,7 +20,7 @@ export default function EmployersPage() {
               <a href="#employer-brief" className={styles.primaryCta}>
                 Talk to us about a role
               </a>
-              <a href="/insights/working-with-growth-minded-employers" className={styles.secondaryCta}>
+              <a href="#how-we-work" className={styles.secondaryCta}>
                 See how we work →
               </a>
             </div>
@@ -56,7 +56,7 @@ export default function EmployersPage() {
           </div>
         </section>
 
-        <section className={styles.section}>
+        <section id="how-we-work" className={styles.section}>
           <div className={styles.sectionInner}>
             <h2 className={styles.sectionTitle}>How we work together</h2>
             <div className={styles.stepsGrid}>
