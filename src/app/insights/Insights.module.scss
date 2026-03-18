@@ -27,6 +27,7 @@
 .title {
   @include headline-2;
   margin-bottom: $spacing-s;
+  color: $color-white;
 }
 
 .subtitle {
@@ -61,6 +62,7 @@
 .section {
   padding: 56px 0 80px;
   background: #f7f7f7;
+  color: $color-black;
 }
 
 .sectionInner {
@@ -70,6 +72,7 @@
 .sectionTitle {
   @include headline-3;
   margin-bottom: $spacing-m;
+  color: $color-black;
 }
 
 .featuredGrid {
@@ -87,6 +90,7 @@
   border-radius: $radius-desktop;
   background: #ffffff;
   box-shadow: $shadow-lg;
+  color: $color-black;
 }
 
 .featuredMeta {
@@ -98,6 +102,7 @@
 .featuredTitle {
   @include headline-3;
   margin-bottom: $spacing-xs;
+  color: $color-black;
 }
 
 .featuredSummary {
@@ -109,6 +114,7 @@
 .featuredLink {
   font-size: $font-detail-3;
   font-weight: $font-weight-bold;
+  color: $color-black;
 }
 
 .listGrid {
@@ -129,6 +135,7 @@
   box-shadow: $shadow-md;
   display: flex;
   flex-direction: column;
+  color: $color-black;
 }
 
 .cardMeta {
@@ -140,6 +147,7 @@
 .cardTitle {
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-xs;
+  color: $color-black;
 }
 
 .cardSummary {
@@ -152,5 +160,6 @@
   margin-top: auto;
   font-size: $font-detail-3;
   font-weight: $font-weight-bold;
+  color: $color-black;
 }
 
