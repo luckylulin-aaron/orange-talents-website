@@ -70,6 +70,7 @@
 .section {
   padding: 72px 0 40px;
   background: #f7f7f7;
+  color: $color-black;
 
   @include mobile {
     padding: 56px 0 32px;
@@ -83,6 +84,7 @@
 .sectionTitle {
   @include headline-3;
   margin-bottom: $spacing-m;
+  color: $color-black;
 }
 
 .servicesGrid {
@@ -150,6 +152,7 @@
 .contactSection {
   padding: 40px 0 80px;
   background: #f7f7f7;
+  color: $color-black;
 }
 
 .contactLayout {
