@@ -1,6 +1,9 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
+/* ============================================
+   Hero (dark bg, white text)
+   ============================================ */
 .hero {
   padding: 120px 0 96px;
   background-image:
@@ -8,7 +11,7 @@
     url('/images/updated_images/2.chatting.jpg');
   background-size: cover;
   background-position: center;
-  color: $color-white;
+  color: #ffffff;
 
   @include mobile {
     padding: 96px 0 72px;
@@ -31,7 +34,7 @@
 .title {
   @include headline-2;
   margin-bottom: $spacing-s;
-  color: $color-white;
+  color: #ffffff;
 }
 
 .subtitle {
@@ -53,7 +56,7 @@
   @include rounded-full;
   padding: 12px 28px;
   background: $color-spotify-green;
-  color: $color-black;
+  color: #000000;
   font-weight: $font-weight-bold;
   font-size: $font-body-1;
   @include transition(background-color);
@@ -69,13 +72,34 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+/* ============================================
+   Light content wrapper — 隔离 globals 的白色，强制黑色文字
+   ============================================ */
+.lightContent {
+  background: #f7f7f7;
+  color: #1a1a1a;
+
+  /* 覆盖 globals section { color: #fff } */
+  section {
+    color: #1a1a1a;
+  }
+  h1, h2, h3, p, span, label, a {
+    color: #1a1a1a;
+  }
+  a:hover {
+    color: #ff914d;
+  }
+}
+
+/* ============================================
+   Light sections (inside .lightContent)
+   ============================================ */
 .section {
   padding: 72px 0 40px;
   background: #f7f7f7;
-  color: $color-black;
 
   &[id='how-we-work'] {
-    scroll-margin-top: 80px; /* account for fixed header */
+    scroll-margin-top: 80px;
   }
 
   @include mobile {
@@ -90,7 +114,7 @@
 .sectionTitle {
   @include headline-3;
   margin-bottom: $spacing-m;
-  color: $color-black;
+  color: #000000 !important;
 }
 
 .servicesGrid {
@@ -113,11 +137,12 @@
 .serviceTitle {
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-xs;
+  color: #000000 !important;
 }
 
 .serviceText {
   font-size: $font-paragraph-3;
-  color: $color-text-secondary;
+  color: #444444;
 }
 
 .stepsGrid {
@@ -141,24 +166,24 @@
   font-size: $font-detail-3;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: $color-text-secondary;
   margin-bottom: $spacing-xs;
+  color: #444444;
 }
 
 .stepTitle {
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-xs;
+  color: #1a1a1a;
 }
 
 .stepText {
   font-size: $font-paragraph-3;
-  color: $color-text-secondary;
+  color: #444444;
 }
 
 .casesSection {
   padding: 40px 0 40px;
   background: #ffffff;
-  color: $color-black;
 }
 
 .caseList {
@@ -181,17 +206,17 @@
 .caseTitle {
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-xs;
+  color: #000000 !important;
 }
 
 .caseText {
   font-size: $font-paragraph-3;
-  color: $color-text-secondary;
+  color: #444444;
 }
 
 .contactSection {
   padding: 40px 0 80px;
   background: #f7f7f7;
-  color: $color-black;
 }
 
 .contactLayout {
@@ -206,11 +231,12 @@
 
 .contactIntro {
   font-size: $font-paragraph-3;
-  color: $color-text-secondary;
+  color: #444444;
 }
 
 .highlight {
   font-weight: $font-weight-bold;
+  color: #1a1a1a;
 }
 
 .form {
@@ -229,7 +255,7 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   margin-bottom: $spacing-xxs;
-  color: $color-text-secondary;
+  color: #444444;
 }
 
 .input,
@@ -239,6 +265,8 @@
   border-radius: $radius-small;
   border: 1px solid rgba(0, 0, 0, 0.16);
   font-size: $font-body-1;
+  background: #ffffff;
+  color: #1a1a1a;
 }
 
 .textarea {
@@ -256,8 +284,8 @@
   @include button-reset;
   @include rounded-full;
   padding: 10px 24px;
-  background: $color-black;
-  color: $color-white;
+  background: #000000;
+  color: #ffffff;
   font-weight: $font-weight-bold;
   font-size: $font-body-1;
 }
@@ -265,6 +293,5 @@
 .note {
   margin-top: $spacing-xs;
   font-size: $font-detail-3;
-  color: $color-text-secondary;
+  color: #444444;
 }
-
