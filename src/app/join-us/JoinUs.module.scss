@@ -43,7 +43,6 @@
 .heroActions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: $spacing-s;
 }
 
@@ -107,18 +106,16 @@
   border-radius: $radius-desktop;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: $shadow-md;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .benefitTitle {
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-xs;
-  color: $color-white;
 }
 
 .benefitText {
   font-size: $font-paragraph-3;
-  color: rgba(255, 255, 255, 0.85);
+  color: $color-text-secondary;
 }
 
 .rolesList {
@@ -148,7 +145,6 @@
 
 .roleTitle {
   font-weight: $font-weight-bold;
-  color: $color-black;
 }
 
 .roleMeta {
@@ -166,12 +162,10 @@
 .applyLink {
   text-decoration: none;
   font-weight: $font-weight-bold;
-  color: $color-black;
 }
 
 .contactSection {
   padding: 24px 0 80px;
-  color: rgba(255, 255, 255, 0.9);
 
   @include mobile {
     padding-bottom: 56px;
@@ -184,6 +178,5 @@
 
 .emailLink {
   font-weight: $font-weight-bold;
-  color: $color-white;
 }
 
