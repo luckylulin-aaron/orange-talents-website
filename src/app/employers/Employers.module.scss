@@ -97,6 +97,7 @@
 .section {
   padding: 72px 0 40px;
   background: #f7f7f7;
+  color: $color-text-primary;
 
   &[id='how-we-work'] {
     scroll-margin-top: 80px;
@@ -184,6 +185,7 @@
 .casesSection {
   padding: 40px 0 40px;
   background: #ffffff;
+  color: $color-text-primary;
 }
 
 .caseList {
@@ -217,6 +219,7 @@
 .contactSection {
   padding: 40px 0 80px;
   background: #f7f7f7;
+  color: $color-text-primary;
 }
 
 .contactLayout {

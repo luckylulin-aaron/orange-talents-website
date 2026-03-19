@@ -71,7 +71,7 @@ export default function JoinUsPage() {
           </div>
         </section>
 
-        <section id="open-roles" className={styles.section}>
+        <section id="open-roles" className={`${styles.section} ${styles.sectionLight}`}>
           <div className={styles.sectionInner}>
             <h2 className={styles.sectionTitle}>Open roles at Orange Talents</h2>
             <div className={styles.rolesList}>
