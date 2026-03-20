@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
     jobLink,
   ])
 
-  return NextResponse.json({ applied: result.rowCount > 0 }, { status: 200 })
+  // `pg` exposes `rowCount` as `number | null`
+  return NextResponse.json({ applied: (result.rowCount ?? 0) > 0 }, { status: 200 })
 }
 
