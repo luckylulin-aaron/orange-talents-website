@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import styles from './JoinUs.module.scss'
+import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
 const roles = [
   {
@@ -9,14 +10,18 @@ const roles = [
     title: 'Recruiting Analyst, Orange Talents',
     location: 'Shenzhen or Remote',
     type: 'Full-time',
-    applyLink: 'mailto:careers@orangetalents.com?subject=Application%20-%20Recruiting%20Analyst',
+    jobLink: '/jobs/recruiting-analyst',
+    jobCategory: 'Opportunities',
+    applyLink: 'mailto:people@orangetalents.com?subject=Application%20-%20Recruiting%20Analyst',
   },
   {
     id: 2,
     title: 'Talent Consultant (Early Career)',
     location: 'Shenzhen or Remote',
     type: 'Full-time',
-    applyLink: 'mailto:careers@orangetalents.com?subject=Application%20-%20Talent%20Consultant%20(Early%20Career)',
+    jobLink: '/jobs/talent-consultant',
+    jobCategory: 'Opportunities',
+    applyLink: 'mailto:people@orangetalents.com?subject=Application%20-%20Talent%20Consultant%20(Early%20Career)',
   },
 ]
 
@@ -38,7 +43,7 @@ export default function JoinUsPage() {
               <a href="#open-roles" className={styles.primaryCta}>
                 View open roles
               </a>
-              <a href="mailto:careers@orangetalents.com" className={styles.secondaryCta}>
+              <a href="mailto:people@orangetalents.com" className={styles.secondaryCta}>
                 Or send us your resume →
               </a>
             </div>
@@ -84,9 +89,17 @@ export default function JoinUsPage() {
                     </p>
                   </div>
                   <p className={styles.roleApply}>
-                    <a href={role.applyLink} className={styles.applyLink}>
-                      Apply via email &gt;
-                    </a>
+                    <span className={styles.roleApplyLink}>
+                      <a href={role.applyLink} className={styles.applyLink}>
+                        Apply via email &gt;
+                      </a>
+                    </span>
+
+                    <SaveJobButton
+                      jobLink={role.jobLink}
+                      jobTitle={role.title}
+                      jobCategory={role.jobCategory}
+                    />
                   </p>
                 </article>
               ))}
@@ -98,8 +111,8 @@ export default function JoinUsPage() {
           <div className={styles.sectionInner}>
             <p className={styles.contactText}>
               Not seeing a perfect fit yet? You are welcome to send us your resume and a short introduction to{' '}
-              <a href="mailto:careers@orangetalents.com" className={styles.emailLink}>
-                careers@orangetalents.com
+              <a href="mailto:people@orangetalents.com" className={styles.emailLink}>
+                people@orangetalents.com
               </a>{' '}
               and we will reach out when a suitable role opens up.
             </p>

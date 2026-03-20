@@ -3,6 +3,7 @@ import HeroSearch from '@/components/HeroSearch/HeroSearch'
 import Footer from '@/components/Footer/Footer'
 import Link from 'next/link'
 import jobsData from '@/data/jobs.json'
+import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
 function normalize(text: string) {
   return text.toLowerCase().trim()
@@ -58,12 +59,23 @@ export default function JobsPage({ searchParams }: JobsPageProps) {
                         borderBottom: '1px solid rgba(255,255,255,0.08)',
                       }}
                     >
-                      <Link href={job.link} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <p className="detail-2 ma-0" style={{ opacity: 0.7 }}>
-                          {job.category.toUpperCase()}
-                        </p>
-                        <p className="headline-3 ma-0">{job.title}</p>
-                      </Link>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: 16,
+                        }}
+                      >
+                        <Link href={job.link} style={{ textDecoration: 'none', color: 'inherit' }}>
+                          <p className="detail-2 ma-0" style={{ opacity: 0.7 }}>
+                            {job.category.toUpperCase()}
+                          </p>
+                          <p className="headline-3 ma-0">{job.title}</p>
+                        </Link>
+
+                        <SaveJobButton jobLink={job.link} jobTitle={job.title} jobCategory={job.category} />
+                      </div>
                     </li>
                   ))}
                 </ul>

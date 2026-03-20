@@ -4,8 +4,15 @@
       "id": 1,
       "category": "Opportunities",
       "title": "Recruiting Analyst",
-      "image": "/images/updated_images/1.partnership.jpg",
+      "image": "/images/updated_images/recruiting-analyst-bg.jpg",
       "link": "/jobs/recruiting-analyst"
+    },
+    {
+      "id": 2,
+      "category": "Opportunities",
+      "title": "Talent Consultant (Early Career)",
+      "image": "/images/updated_images/1.partnership.jpg",
+      "link": "/jobs/talent-consultant"
     }
   ],
   "featuredJobs": [
@@ -13,9 +20,17 @@
       "id": 1,
       "category": "Opportunities",
       "title": "Recruiting Analyst",
-      "description": "",
-      "image": "/images/updated_images/1.partnership.jpg",
+      "description": "Work directly with founders, business leaders, and HR teams on strategic hiring needs.",
+      "image": "/images/updated_images/recruiting-analyst-bg.jpg",
       "link": "/jobs/recruiting-analyst"
+    },
+    {
+      "id": 2,
+      "category": "Opportunities",
+      "title": "Talent Consultant (Early Career)",
+      "description": "Develop consulting, research, and communication skills with close mentorship from senior teammates.",
+      "image": "/images/updated_images/1.partnership.jpg",
+      "link": "/jobs/talent-consultant"
     }
   ],
   "cities": [
