@@ -46,6 +46,7 @@ $join-us-surface: #fff1e3;
 .heroActions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: $spacing-s;
 }
 
@@ -66,7 +67,10 @@ $join-us-surface: #fff1e3;
 
 .secondaryCta {
   @include button-reset;
+  display: inline-flex;
+  align-items: center;
   font-size: $font-body-1;
+  line-height: 1.25;
   color: rgba(255, 255, 255, 0.85);
 }
 

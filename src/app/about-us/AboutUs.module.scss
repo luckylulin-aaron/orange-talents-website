@@ -62,8 +62,8 @@ $surface-peach: #fff1e3;
   }
 }
 
+/* Same width + alignment as .hero > .container > .content (left edge lines up) */
 .bodyInner {
-  @include container;
   max-width: 760px;
 }
 
