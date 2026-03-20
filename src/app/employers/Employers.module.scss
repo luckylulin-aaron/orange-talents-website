@@ -1,6 +1,13 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
+// Warm surface (same as Join Us / Insights / TabSection)
+$employers-surface: #fff1e3;
+
+.lightContent {
+  background: $employers-surface;
+}
+
 .hero {
   padding: 120px 0 96px;
   background-image:
@@ -43,6 +50,7 @@
 .heroActions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: $spacing-s;
 }
 
@@ -63,13 +71,16 @@
 
 .secondaryCta {
   @include button-reset;
+  display: inline-flex;
+  align-items: center;
   font-size: $font-body-1;
+  line-height: 1.25;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .section {
   padding: 72px 0 40px;
-  background: #f7f7f7;
+  background: $employers-surface;
   color: $color-text-primary;
 
   &[id='how-we-work'] {
@@ -154,7 +165,7 @@
 
 .casesSection {
   padding: 40px 0 40px;
-  background: #ffffff;
+  background: $employers-surface;
   color: $color-text-primary;
 }
 
@@ -171,8 +182,9 @@
 .caseCard {
   padding: $spacing-m;
   border-radius: $radius-desktop;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  box-shadow: $shadow-sm;
 }
 
 .caseTitle {
@@ -187,7 +199,7 @@
 
 .contactSection {
   padding: 40px 0 80px;
-  background: #f7f7f7;
+  background: $employers-surface;
   color: $color-text-primary;
 }
 

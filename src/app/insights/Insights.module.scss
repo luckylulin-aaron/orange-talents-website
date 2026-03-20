@@ -1,6 +1,9 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
+// Warm surface (same as Join Us / TabSection)
+$insights-surface: #fff1e3;
+
 .hero {
   padding: 120px 0 72px;
   background: radial-gradient(circle at top left, #2a2a2a, #000000);
@@ -60,7 +63,7 @@
 
 .section {
   padding: 56px 0 80px;
-  background: #f7f7f7;
+  background: $insights-surface;
   color: $color-text-primary;
 }
 
