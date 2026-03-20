@@ -22,14 +22,41 @@ export async function GET(request: NextRequest) {
   }
 
   const result = await query(
-    `SELECT job_link, job_title, job_category, cover_letter, status, created_at
+    `SELECT id, job_link, job_title, job_category, cover_letter, status, created_at
      FROM job_applications
      WHERE account_id = $1
      ORDER BY created_at DESC`,
     [userId],
   )
 
-  return NextResponse.json({ applications: result.rows }, { status: 200 })
+  const PHASE_STEPS = [
+    { key: 'applied', label: 'Applied', statuses: ['submitted', 'applied'] },
+    { key: 'resume_screening_passed', label: 'Resume screening passed', statuses: ['resume_screening_passed'] },
+    { key: 'interviewing', label: 'Interviewing', statuses: ['interviewing', 'interview'] },
+    {
+      key: 'rejected_offered',
+      label: 'Rejected / offered',
+      statuses: ['rejected', 'offered', 'rejected_offered'],
+    },
+    { key: 'onboarding', label: 'Onboarding', statuses: ['onboarding'] },
+  ] as const
+
+  const mapStatusToPhase = (status: string) => {
+    const normalized = String(status ?? '').toLowerCase()
+
+    const idx = PHASE_STEPS.findIndex((step) => step.statuses.map((s) => s.toLowerCase()).includes(normalized))
+    if (idx === -1) return { phaseIndex: 0, phaseKey: 'applied', phaseLabel: 'Applied' }
+
+    const step = PHASE_STEPS[idx]
+    return { phaseIndex: idx, phaseKey: step.key, phaseLabel: step.label }
+  }
+
+  const applications = result.rows.map((row) => {
+    const { phaseIndex, phaseKey, phaseLabel } = mapStatusToPhase(row.status)
+    return { ...row, phaseIndex, phaseKey, phaseLabel }
+  })
+
+  return NextResponse.json({ applications }, { status: 200 })
 }
 
 export async function POST(request: NextRequest) {

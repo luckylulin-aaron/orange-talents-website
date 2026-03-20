@@ -92,8 +92,8 @@ export default function TalentsPage() {
                 </p>
                 <p className={styles.contactIntro}>
                   Prefer email? Reach us at{' '}
-                  <a href="mailto:employers@orangetalents.com" className={styles.highlight}>
-                    employers@orangetalents.com
+                  <a href="mailto:hr@orangetalents.com" className={styles.highlight}>
+                    hr@orangetalents.com
                   </a>
                   .
                 </p>
@@ -101,7 +101,7 @@ export default function TalentsPage() {
 
               <form
                 className={styles.form}
-                action="mailto:employers@orangetalents.com"
+                action="mailto:hr@orangetalents.com"
                 method="post"
                 encType="text/plain"
               >

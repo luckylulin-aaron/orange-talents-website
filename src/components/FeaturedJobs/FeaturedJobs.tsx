@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import styles from './FeaturedJobs.module.scss'
 import jobsData from '@/data/jobs.json'
+import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
 const FeaturedJobs = () => {
   const [activeCard, setActiveCard] = useState(0)
@@ -43,7 +44,7 @@ const FeaturedJobs = () => {
               {jobsData.featuredJobs.map((job, index) => (
                 <SwiperSlide
                   key={job.id}
-                  className={`w-full ${styles.swiperSlide} ${activeCard === index ? styles.active : styles.closed}`}
+                  className={`${styles.swiperSlide} ${activeCard === index ? styles.active : styles.closed}`}
                 >
                   <div
                     className={`rounded-24 rounded-16-mobile hover-inside ${styles.container} ${
@@ -52,7 +53,7 @@ const FeaturedJobs = () => {
                     role="button"
                     tabIndex={0}
                     style={
-                      job.image && activeCard !== index
+                      job.image
                         ? {
                             backgroundImage: `url(${job.image})`,
                             backgroundSize: 'cover',
@@ -74,13 +75,15 @@ const FeaturedJobs = () => {
                     <p className={`ma-0 color-black headline-2 ${styles.title}`}>
                       {job.title}
                     </p>
-                    <p className={`ma-0 color-black paragraph-2 ${styles.text}`}>
-                      {job.description}
-                    </p>
-                    <div className={`mt-m mt-s mb-0-last w-fit ${styles.jobApply}`}>
+                    <div className={`mt-m mt-s mb-0-last w-fit ${styles.jobActions}`}>
                       <Link aria-label="Apply now" className={`detail-3 ${styles.link}`} href={job.link}>
                         Apply now &gt;
                       </Link>
+
+                      {/* Prevent clicking the save button from also triggering swiper/card selection */}
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <SaveJobButton jobLink={job.link} jobTitle={job.title} jobCategory={job.category} />
+                      </div>
                     </div>
                   </div>
                 </SwiperSlide>
