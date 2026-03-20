@@ -30,9 +30,28 @@ export default function AboutUsPage() {
             </div>
           </div>
         </section>
+
+        <section className={styles.bodySection} aria-labelledby="about-us-more-heading">
+          <div className={styles.bodyInner}>
+            <h2 id="about-us-more-heading" className={styles.bodyTitle}>
+              What you can expect from us
+            </h2>
+            <div className={styles.bodyCopy}>
+              <p>
+                We keep searches focused and communication honest—so clients know what the market is saying, and
+                candidates understand how a role really fits their next chapter.
+              </p>
+              <p>
+                Most of our work sits at the intersection of China-linked growth and global teams: org design questions,
+                cross-border reporting, and hiring narratives that need to work in more than one market. If that sounds
+                like your world, we would like to hear from you.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <Footer />
+      <Footer variant="compact" />
     </div>
   )
 }

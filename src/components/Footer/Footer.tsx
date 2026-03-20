@@ -3,13 +3,21 @@
 import Link from 'next/link'
 import styles from './Footer.module.scss'
 
-const Footer = () => {
+type FooterProps = {
+  /** Less top margin for pages where the default 160px gap feels too empty */
+  variant?: 'default' | 'compact'
+}
+
+const Footer = ({ variant = 'default' }: FooterProps) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const rootClass =
+    variant === 'compact' ? `${styles.container} ${styles.containerCompact}` : styles.container
+
   return (
-    <footer id="js-footer" className={styles.container}>
+    <footer id="js-footer" className={rootClass}>
       <div className={`container p-relative color-white ${styles.content}`}>
         <div className={`is-hidden-mobile ${styles.scrollButton}`}>
           <button aria-label="Scroll to top" className={styles.scrollBtn} onClick={scrollToTop}>

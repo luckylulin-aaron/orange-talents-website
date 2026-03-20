@@ -49,3 +49,41 @@
   }
 }
 
+// Fills the light area below the hero with copy (aligned with Join Us / Insights surface)
+$surface-peach: #fff1e3;
+
+.bodySection {
+  padding: 24px 0 16px;
+  background: $surface-peach;
+  color: $color-text-primary;
+
+  @include mobile {
+    padding: 20px 0 12px;
+  }
+}
+
+.bodyInner {
+  @include container;
+  max-width: 760px;
+}
+
+.bodyTitle {
+  @include headline-3;
+  margin-bottom: $spacing-xs;
+}
+
+// Single body style for all paragraphs in this block
+.bodyCopy {
+  p {
+    margin: 0 0 $spacing-xs 0;
+    font-size: $font-paragraph-3;
+    line-height: $line-height-relaxed;
+    font-weight: $font-weight-normal;
+    color: $color-text-primary;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+

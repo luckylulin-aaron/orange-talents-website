@@ -13,6 +13,17 @@
   }
 }
 
+/* Tighter spacing above footer (e.g. short content pages with a light band above) */
+.containerCompact {
+  margin-top: 32px;
+  padding: 72px 0 32px;
+
+  @include mobile {
+    margin-top: 24px;
+    padding: 56px 0 24px;
+  }
+}
+
 .content {
   display: flex;
   flex-direction: column;

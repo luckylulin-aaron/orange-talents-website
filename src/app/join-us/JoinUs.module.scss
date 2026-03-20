@@ -1,6 +1,9 @@
 @import '@/styles/variables';
 @import '@/styles/mixins';
 
+// Warm surface aligned with TabSection / site accent (light peach)
+$join-us-surface: #fff1e3;
+
 .hero {
   padding: 120px 0 96px;
   background-image:
@@ -69,14 +72,16 @@
 
 .section {
   padding: 72px 0 40px;
+  background: $join-us-surface;
+  color: $color-text-primary;
 
   @include mobile {
     padding: 56px 0 32px;
   }
 
-  /* 浅色区块（如 Open roles）需要深色文字，避免继承全局白字 */
+  /* Open roles：与上下区块同一浅橙底，职位卡片保持白底以突出层次 */
   &.sectionLight {
-    background: #f7f7f7;
+    background: $join-us-surface;
     color: $color-text-primary;
   }
 }
@@ -102,9 +107,9 @@
 
 .benefitCard {
   padding: $spacing-m;
-  background: rgba(255, 255, 255, 0.02);
+  background: #ffffff;
   border-radius: $radius-desktop;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: $shadow-md;
 }
 
@@ -166,6 +171,8 @@
 
 .contactSection {
   padding: 24px 0 80px;
+  background: $join-us-surface;
+  color: $color-text-primary;
 
   @include mobile {
     padding-bottom: 56px;
