@@ -449,15 +449,20 @@ img {
   align-items: stretch;
 }
 
-/* 全局黑色背景和白色文字 */
-main {
+/* 
+NOTE: Removed aggressive global styles that caused issues.
+Each page/section should define its own background and text color.
+Background colors are now controlled at the page level.
+*/
+
+/* main {
   background: #000000;
   color: #FFFFFF;
 }
 
-/* 所有section默认黑色背景 */
 section {
   background: #000000;
   color: #FFFFFF;
-}
+} */
+
 

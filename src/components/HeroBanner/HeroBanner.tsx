@@ -20,9 +20,10 @@ const HeroBanner = () => {
               Go Global with Orange Talents
             </h1>
             <p className={styles.body}>
-              We&apos;re a specialized executive recruitment agency, with senior consultants averaging over six years of
-              hands-on experience. We&apos;ve interviewed 1000+ enterprises striving to bring together candidates and
-              employers with uniqueness.
+              The hire that makes the difference. Talent that transforms. As a consultancy specializing in high-technology
+              sectors, our strength lies in our consultants&apos; deep industry immersion and their grasp of both technical
+              complexity and business value. With over 1,000 technology-driven enterprises as partners, we connect
+              visionary tech leaders with ambitious organizations—turning critical hires into market-defining moments.
             </p>
 
             <div className={styles.actions}>
