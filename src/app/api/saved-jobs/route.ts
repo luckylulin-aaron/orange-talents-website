@@ -82,7 +82,8 @@ export async function DELETE(request: NextRequest) {
       jobLink,
     ])
 
-    return NextResponse.json({ success: result.rowCount > 0 }, { status: 200 })
+    // `pg` exposes `rowCount` as `number | null`
+    return NextResponse.json({ success: (result.rowCount ?? 0) > 0 }, { status: 200 })
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Error in /api/saved-jobs DELETE', error)

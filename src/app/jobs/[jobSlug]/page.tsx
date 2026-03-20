@@ -35,9 +35,10 @@ export default function JobDetailPage({ params }: Params) {
     )
   }
 
-  const jobTitle = job.title as string
-  const jobCategory = job.category as string
-  const jobDescription = (job.description ?? '') as string
+  const safeJob = job as any
+  const jobTitle = safeJob.title as string
+  const jobCategory = safeJob.category as string
+  const jobDescription = (safeJob.description ?? '') as string
 
   return (
     <div className="site">
