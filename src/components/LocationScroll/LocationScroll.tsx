@@ -22,10 +22,10 @@ const LocationScroll = () => {
       <div className="container block-container mb-l mb-mobile-l">
         <div className="row">
           <div className="col-10-mobile col-offset-mobile-1 col-6 col-offset-3">
-            <h2 className="mb-s mb-mobile-xs headline-1 color-white">
+            <h2 className="mb-s mb-mobile-xs headline-1 color-black">
               <span>Go Global with Us</span>
             </h2>
-            <p className="paragraph-2 color-white">
+            <p className="paragraph-2 color-black">
               Orange Talents bridges enterprises with talented candidates who have shared values around the world.
             </p>
           </div>
