@@ -48,21 +48,24 @@ export async function POST(request: NextRequest) {
     if (!auth) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
     const { applicationId, newStatus } = await request.json()
-    if (!applicationId || typeof applicationId !== 'number') {
+    if (!Number.isInteger(applicationId) || applicationId <= 0) {
       return NextResponse.json({ error: 'applicationId is required.' }, { status: 400 })
     }
 
-    if (!newStatus || typeof newStatus !== 'string') {
+    const normalized = typeof newStatus === 'string' ? (newStatus.trim().toLowerCase() as NewStatus) : null
+    if (!normalized) {
       return NextResponse.json({ error: 'newStatus is required.' }, { status: 400 })
     }
 
-    const normalized = newStatus as NewStatus
     if (!ALLOWED_STATUSES.includes(normalized)) {
       return NextResponse.json({ error: 'Invalid newStatus.' }, { status: 400 })
     }
 
     const result = await query(
-      'UPDATE job_applications SET status = $1 WHERE id = $2 RETURNING id, status',
+      `UPDATE job_applications
+       SET status = $1
+       WHERE id = $2
+       RETURNING id, job_link, job_title, job_category, status, created_at`,
       [normalized, applicationId],
     )
 

@@ -22,18 +22,26 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url)
-  const jobLink = searchParams.get('jobLink')
+  const jobLink = searchParams.get('jobLink')?.trim()
 
   if (!jobLink) {
     return NextResponse.json({ error: 'jobLink is required.' }, { status: 400 })
   }
 
-  const result = await query('SELECT 1 FROM job_applications WHERE account_id = $1 AND job_link = $2', [
-    userId,
-    jobLink,
-  ])
+  try {
+    const result = await query(
+      `SELECT id, job_link, job_title, job_category, status, created_at
+       FROM job_applications
+       WHERE account_id = $1 AND job_link = $2`,
+      [userId, jobLink],
+    )
 
-  // `pg` exposes `rowCount` as `number | null`
-  return NextResponse.json({ applied: (result.rowCount ?? 0) > 0 }, { status: 200 })
+    const application = result.rows[0] ?? null
+    return NextResponse.json({ applied: Boolean(application), application }, { status: 200 })
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error in /api/job-applications/is-applied GET', error)
+    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 })
+  }
 }
 

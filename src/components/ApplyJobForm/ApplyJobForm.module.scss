@@ -21,6 +21,12 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+.statusBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .link {
   color: $color-white;
   font-weight: 700;
@@ -54,6 +60,13 @@
   margin: 0;
   color: #ffb4a2;
   font-size: $font-detail-3;
+}
+
+.warning {
+  margin: 0;
+  color: #ffd28a;
+  font-size: $font-detail-3;
+  line-height: 1.5;
 }
 
 .success {

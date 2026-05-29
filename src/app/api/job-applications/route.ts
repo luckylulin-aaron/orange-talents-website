@@ -4,6 +4,18 @@ import { verifyToken } from '@/lib/auth'
 
 type AuthPayload = { userId: number }
 
+const PHASE_STEPS = [
+  { key: 'applied', label: 'Applied', statuses: ['submitted', 'applied'] },
+  { key: 'resume_screening_passed', label: 'Resume screening passed', statuses: ['resume_screening_passed'] },
+  { key: 'interviewing', label: 'Interviewing', statuses: ['interviewing', 'interview'] },
+  {
+    key: 'rejected_offered',
+    label: 'Rejected / offered',
+    statuses: ['rejected', 'offered', 'rejected_offered'],
+  },
+  { key: 'onboarding', label: 'Onboarding', statuses: ['onboarding'] },
+] as const
+
 async function getAuthUserId(request: NextRequest): Promise<number | null> {
   try {
     const token = request.cookies.get('auth_token')?.value
@@ -13,6 +25,16 @@ async function getAuthUserId(request: NextRequest): Promise<number | null> {
   } catch {
     return null
   }
+}
+
+function mapStatusToPhase(status: string) {
+  const normalized = String(status ?? '').toLowerCase()
+
+  const idx = PHASE_STEPS.findIndex((step) => step.statuses.some((s) => s.toLowerCase() === normalized))
+  if (idx === -1) return { phaseIndex: 0, phaseKey: 'applied', phaseLabel: 'Applied' }
+
+  const step = PHASE_STEPS[idx]
+  return { phaseIndex: idx, phaseKey: step.key, phaseLabel: step.label }
 }
 
 export async function GET(request: NextRequest) {
@@ -28,28 +50,6 @@ export async function GET(request: NextRequest) {
      ORDER BY created_at DESC`,
     [userId],
   )
-
-  const PHASE_STEPS = [
-    { key: 'applied', label: 'Applied', statuses: ['submitted', 'applied'] },
-    { key: 'resume_screening_passed', label: 'Resume screening passed', statuses: ['resume_screening_passed'] },
-    { key: 'interviewing', label: 'Interviewing', statuses: ['interviewing', 'interview'] },
-    {
-      key: 'rejected_offered',
-      label: 'Rejected / offered',
-      statuses: ['rejected', 'offered', 'rejected_offered'],
-    },
-    { key: 'onboarding', label: 'Onboarding', statuses: ['onboarding'] },
-  ] as const
-
-  const mapStatusToPhase = (status: string) => {
-    const normalized = String(status ?? '').toLowerCase()
-
-    const idx = PHASE_STEPS.findIndex((step) => step.statuses.map((s) => s.toLowerCase()).includes(normalized))
-    if (idx === -1) return { phaseIndex: 0, phaseKey: 'applied', phaseLabel: 'Applied' }
-
-    const step = PHASE_STEPS[idx]
-    return { phaseIndex: idx, phaseKey: step.key, phaseLabel: step.label }
-  }
 
   const applications = result.rows.map((row) => {
     const { phaseIndex, phaseKey, phaseLabel } = mapStatusToPhase(row.status)
@@ -67,25 +67,57 @@ export async function POST(request: NextRequest) {
 
   try {
     const { jobLink, jobTitle, jobCategory, coverLetter } = await request.json()
+    const normalizedJobLink = typeof jobLink === 'string' ? jobLink.trim() : ''
+    const normalizedCoverLetter = typeof coverLetter === 'string' ? coverLetter.trim() : ''
 
-    if (!jobLink) {
+    if (!normalizedJobLink) {
       return NextResponse.json({ error: 'jobLink is required.' }, { status: 400 })
+    }
+
+    if (!normalizedCoverLetter) {
+      return NextResponse.json({ error: 'coverLetter is required.' }, { status: 400 })
     }
 
     const result = await query(
       `INSERT INTO job_applications (account_id, job_link, job_title, job_category, cover_letter, status)
        VALUES ($1, $2, $3, $4, $5, 'submitted')
-       ON CONFLICT (account_id, job_link) DO UPDATE
-         SET job_title = EXCLUDED.job_title,
-             job_category = EXCLUDED.job_category,
-             cover_letter = EXCLUDED.cover_letter,
-             status = EXCLUDED.status,
-             created_at = NOW()
-       RETURNING job_link, job_title, job_category, cover_letter, status, created_at`,
-      [userId, jobLink, jobTitle ?? null, jobCategory ?? null, coverLetter ?? null],
+       ON CONFLICT (account_id, job_link) DO NOTHING
+       RETURNING id, job_link, job_title, job_category, cover_letter, status, created_at`,
+      [
+        userId,
+        normalizedJobLink,
+        typeof jobTitle === 'string' ? jobTitle.trim() || null : null,
+        typeof jobCategory === 'string' ? jobCategory.trim() || null : null,
+        normalizedCoverLetter,
+      ],
     )
 
-    return NextResponse.json({ application: result.rows[0] }, { status: 201 })
+    if (result.rowCount === 0) {
+      const existing = await query(
+        `SELECT id, job_link, job_title, job_category, cover_letter, status, created_at
+         FROM job_applications
+         WHERE account_id = $1 AND job_link = $2`,
+        [userId, normalizedJobLink],
+      )
+
+      const existingApplication = existing.rows[0]
+      const phase = existingApplication ? mapStatusToPhase(existingApplication.status) : null
+
+      return NextResponse.json(
+        {
+          error: 'You have already applied for this job.',
+          alreadyApplied: true,
+          application: existingApplication && phase ? { ...existingApplication, ...phase } : null,
+        },
+        { status: 409 },
+      )
+    }
+
+    const application = result.rows[0]
+    return NextResponse.json(
+      { application: { ...application, ...mapStatusToPhase(application.status) } },
+      { status: 201 },
+    )
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Error in /api/job-applications POST', error)
