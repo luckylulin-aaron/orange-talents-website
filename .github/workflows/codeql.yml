@@ -1,0 +1,36 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [development]
+  pull_request:
+    branches: [development]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    env:
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      DATABASE_URL: postgres://user:pass@localhost:5432/orange_talents
+      JWT_SECRET: ci-dummy-jwt-secret
+      ADMIN_EMAILS: admin@example.com
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          # Autobuild will run commands like npm/yarn; keep env vars set at job level
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
