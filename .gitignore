@@ -24,6 +24,15 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.example
+
+# Cursor IDE
+.cursor/
+
+# GitHub automation (keep local, do not commit)
+.github/dependabot.yml
+.github/workflows/ci.yml
+.github/workflows/codeql.yml
 
 # vercel
 .vercel
