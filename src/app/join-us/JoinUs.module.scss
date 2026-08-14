@@ -63,6 +63,11 @@ $join-us-surface: #fff1e3;
   &:hover {
     background: lighten($color-spotify-green, 4%);
   }
+
+  &:focus-visible {
+    outline: 3px solid $color-white;
+    outline-offset: 3px;
+  }
 }
 
 .secondaryCta {
@@ -72,6 +77,18 @@ $join-us-surface: #fff1e3;
   font-size: $font-body-1;
   line-height: 1.25;
   color: rgba(255, 255, 255, 0.85);
+
+  &:hover {
+    color: $color-white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid $color-white;
+    outline-offset: 4px;
+  }
 }
 
 .section {
@@ -85,6 +102,7 @@ $join-us-surface: #fff1e3;
 
   /* Open roles：与上下区块同一浅橙底，职位卡片保持白底以突出层次 */
   &.sectionLight {
+    scroll-margin-top: 96px;
     background: $join-us-surface;
     color: $color-text-primary;
   }
@@ -156,6 +174,23 @@ $join-us-surface: #fff1e3;
   font-weight: $font-weight-bold;
 }
 
+.roleTitleLink {
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.24);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration-color: #ff914d;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid $color-violet;
+    outline-offset: 4px;
+  }
+}
+
 .roleMeta {
   font-size: $font-detail-3;
   color: $color-text-secondary;
@@ -176,9 +211,20 @@ $join-us-surface: #fff1e3;
   flex: 1;
 }
 
-.applyLink {
+.roleApplicationLink {
   text-decoration: none;
   font-weight: $font-weight-bold;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid $color-violet;
+    outline-offset: 4px;
+  }
 }
 
 .contactSection {
@@ -195,7 +241,25 @@ $join-us-surface: #fff1e3;
   font-size: $font-paragraph-3;
 }
 
-.emailLink {
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-s $spacing-m;
+  margin-top: $spacing-s;
+}
+
+.contactLink {
   font-weight: $font-weight-bold;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid $color-violet;
+    outline-offset: 4px;
+  }
 }
 
