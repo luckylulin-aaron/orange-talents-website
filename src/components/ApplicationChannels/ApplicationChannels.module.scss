@@ -1,0 +1,204 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+$application-surface: #fff1e3;
+$brand-orange: #ff914d;
+
+.section {
+  padding: 72px 0 40px;
+  scroll-margin-top: 96px;
+  background: $application-surface;
+  color: $color-text-primary;
+
+  @include mobile {
+    padding: 56px 0 32px;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.intro {
+  max-width: 760px;
+  margin-bottom: $spacing-l;
+}
+
+.eyebrow {
+  margin-bottom: $spacing-xs;
+  color: $color-text-secondary;
+  font-size: $font-detail-3;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  @include headline-3;
+  margin-bottom: $spacing-xs;
+}
+
+.description {
+  @include paragraph-2;
+  color: $color-text-secondary;
+}
+
+.descriptionZh {
+  margin-top: $spacing-xxs;
+  color: $color-text-secondary;
+  font-size: $font-paragraph-3;
+}
+
+.channelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $spacing-m;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.channelPanel {
+  --channel-accent: #{$color-violet};
+  --channel-accent-soft: rgba(124, 92, 191, 0.1);
+  --channel-action-text: #{$color-white};
+
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: $spacing-l;
+  border: 1px solid var(--channel-accent);
+  border-radius: $radius-desktop;
+  background: $color-white;
+  box-shadow: $shadow-md;
+
+  @include mobile {
+    padding: $spacing-m;
+    border-radius: $radius-mobile;
+  }
+}
+
+.purple {
+  --channel-accent: #{$color-violet};
+  --channel-accent-soft: rgba(124, 92, 191, 0.1);
+  --channel-action-text: #{$color-white};
+}
+
+.orange {
+  --channel-accent: #{$brand-orange};
+  --channel-accent-soft: rgba(255, 145, 77, 0.14);
+  --channel-action-text: #{$color-black};
+}
+
+.channelCopy {
+  min-height: 164px;
+
+  @include mobile {
+    min-height: 0;
+  }
+}
+
+.channelTag {
+  display: inline-flex;
+  margin-bottom: $spacing-s;
+  padding: 6px 12px;
+  border-radius: $radius-button;
+  background: var(--channel-accent-soft);
+  color: var(--channel-accent);
+  font-size: $font-detail-3;
+  font-weight: $font-weight-bold;
+}
+
+.channelTitle {
+  @include headline-3;
+  margin-bottom: $spacing-xs;
+  overflow-wrap: anywhere;
+}
+
+.channelDescription {
+  max-width: 520px;
+  color: $color-text-secondary;
+  font-size: $font-paragraph-3;
+  line-height: $line-height-normal;
+}
+
+.channelAction {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $spacing-m;
+}
+
+.qrLink {
+  display: block;
+  width: 232px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: $radius-small;
+  background: $color-white;
+  @include transition(transform);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--channel-accent);
+    outline-offset: 4px;
+  }
+
+  @include mobile {
+    width: 220px;
+  }
+}
+
+.qrImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.scanHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $spacing-s 0 $spacing-m;
+  color: $color-text-secondary;
+  font-size: $font-detail-3;
+  line-height: $line-height-normal;
+  text-align: center;
+}
+
+.channelCta {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 10px $spacing-s;
+  border-radius: $radius-small;
+  background: var(--channel-accent);
+  color: var(--channel-action-text);
+  font-weight: $font-weight-bold;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+  @include transition(transform);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-black;
+    outline-offset: 3px;
+  }
+}
+
+.channelCtaEn {
+  font-size: $font-body-2;
+}

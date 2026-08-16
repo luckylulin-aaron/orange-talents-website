@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
+import ApplicationChannels from '@/components/ApplicationChannels/ApplicationChannels'
+import {
+  applicationChannels,
+  FULL_TIME_INTERNSHIP_APPLICATION_URL,
+} from '@/data/applicationChannels'
 import styles from './JoinUs.module.scss'
 import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
@@ -12,7 +17,6 @@ const roles = [
     type: 'Full-time',
     jobLink: '/jobs/recruiting-analyst',
     jobCategory: 'Opportunities',
-    applyLink: 'mailto:people@orangetalents.com?subject=Application%20-%20Recruiting%20Analyst',
   },
   {
     id: 2,
@@ -21,7 +25,6 @@ const roles = [
     type: 'Full-time',
     jobLink: '/jobs/talent-consultant',
     jobCategory: 'Opportunities',
-    applyLink: 'mailto:people@orangetalents.com?subject=Application%20-%20Talent%20Consultant%20(Early%20Career)',
   },
 ]
 
@@ -43,12 +46,14 @@ export default function JoinUsPage() {
               <a href="#open-roles" className={styles.primaryCta}>
                 View open roles
               </a>
-              <a href="mailto:people@orangetalents.com" className={styles.secondaryCta}>
-                Or send us your resume →
+              <a href="#application-channels" className={styles.secondaryCta}>
+                Explore application channels →
               </a>
             </div>
           </div>
         </section>
+
+        <ApplicationChannels />
 
         <section className={styles.section}>
           <div className={styles.sectionInner}>
@@ -83,15 +88,25 @@ export default function JoinUsPage() {
               {roles.map((role) => (
                 <article key={role.id} className={styles.roleCard}>
                   <div className={styles.roleHeader}>
-                    <p className={styles.roleTitle}>{role.title}</p>
+                    <h3 className={styles.roleTitle}>
+                      <Link href={role.jobLink} className={styles.roleTitleLink}>
+                        {role.title}
+                      </Link>
+                    </h3>
                     <p className={styles.roleMeta}>
                       {role.location} · {role.type}
                     </p>
                   </div>
-                  <p className={styles.roleApply}>
+                  <div className={styles.roleApply}>
                     <span className={styles.roleApplyLink}>
-                      <a href={role.applyLink} className={styles.applyLink}>
-                        Apply via email &gt;
+                      <a
+                        href={FULL_TIME_INTERNSHIP_APPLICATION_URL}
+                        className={styles.roleApplicationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open the Full-time and Internship application form in a new tab"
+                      >
+                        Apply now &gt;
                       </a>
                     </span>
 
@@ -100,7 +115,7 @@ export default function JoinUsPage() {
                       jobTitle={role.title}
                       jobCategory={role.jobCategory}
                     />
-                  </p>
+                  </div>
                 </article>
               ))}
             </div>
@@ -110,12 +125,23 @@ export default function JoinUsPage() {
         <section className={styles.contactSection}>
           <div className={styles.sectionInner}>
             <p className={styles.contactText}>
-              Not seeing a perfect fit yet? You are welcome to send us your resume and a short introduction to{' '}
-              <a href="mailto:people@orangetalents.com" className={styles.emailLink}>
-                people@orangetalents.com
-              </a>{' '}
-              and we will reach out when a suitable role opens up.
+              Not seeing the right fit yet? Choose the application channel that matches how you would like to work
+              with us.
             </p>
+            <nav className={styles.contactLinks} aria-label="Application channel links">
+              {applicationChannels.map((channel) => (
+                <a
+                  key={channel.id}
+                  href={channel.href}
+                  className={styles.contactLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={channel.linkAriaLabel}
+                >
+                  {channel.titleEn} <span aria-hidden="true">→</span>
+                </a>
+              ))}
+            </nav>
           </div>
         </section>
       </main>
