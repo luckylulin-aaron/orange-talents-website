@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import Link from '@/components/common/NoLink'
+import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import styles from './FeaturedJobs.module.scss'
-import jobsData from '@/data/jobs.json'
+export type FeaturedJob = {id:number;title:string;category:string;link:string;image?:string}
 import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
-const FeaturedJobs = () => {
+const FeaturedJobs = ({jobs}: {jobs:FeaturedJob[]}) => {
   const [activeCard, setActiveCard] = useState(0)
 
   const handleCardClick = (index: number) => {
@@ -41,7 +41,7 @@ const FeaturedJobs = () => {
                 },
               }}
             >
-              {jobsData.featuredJobs.map((job, index) => (
+              {jobs.map((job, index) => (
                 <SwiperSlide
                   key={job.id}
                   className={`${styles.swiperSlide} ${activeCard === index ? styles.active : styles.closed}`}

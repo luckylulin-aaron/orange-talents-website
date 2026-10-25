@@ -14,6 +14,8 @@ type Application = {
   job_category: string | null
   cover_letter: string | null
   status: string
+  delivery_status?: string
+  resume_name?: string
   created_at: string
   phaseIndex?: number
   phaseLabel?: string
@@ -194,6 +196,8 @@ export default function ApplicationsPage() {
                       Submitted: {new Date(app.created_at).toLocaleDateString()}
                     </p>
 
+                    {app.resume_name&&<p className="paragraph-2">Resume: {app.resume_name}</p>}
+                    {app.delivery_status&&app.delivery_status!=='legacy'&&<p className="paragraph-2">Email delivery: {app.delivery_status==='sent'?'Accepted by mail service':app.delivery_status==='review'?'Being checked by our team':app.delivery_status==='failed'?'Needs attention — application saved':'Queued — application saved'}</p>}
                     <div style={{ marginTop: 10 }}>
                       <ApplicationProgress phaseIndex={app.phaseIndex ?? 0} />
                       <p className="paragraph-2 ma-0" style={{ opacity: 0.7 }}>

@@ -1,0 +1,19 @@
+.page { padding-top: 84px; background: #fff; color: #242424; min-height: 80vh; }
+.container, .content { width: min(1040px, calc(100% - 48px)); margin: 0 auto; }
+.hero { background: #1b1b1b; color: white; padding: 42px 0 48px; h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin: 20px 0 0; } }
+.breadcrumb { display: flex; gap: 10px; flex-wrap: wrap; color: #aaa; font-size: 12px; a { color: inherit; text-decoration: none; &:hover { color: #fff; } } }
+.content { padding: 52px 0 72px; min-height: 380px; }
+.heading { font-size: 22px; font-weight: 700; margin: 0 0 22px; span { color: #ff5800; } }
+.list { padding: 6px 26px; margin: 0; list-style: none; border: 1px solid #e6e6e6; border-radius: 10px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0; & + & { border-top: 1px solid #ededed; } }
+.info { min-width: 0; h3 { font-size: 16px; font-weight: 600; line-height: 1.45; margin: 0 0 8px; overflow-wrap: anywhere; } }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 12px; color: #737373; line-height: 1.5; span { display: inline-flex; align-items: center; gap: 5px; } svg { flex-shrink: 0; } }
+.actions { display: flex; gap: 10px; flex-shrink: 0; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 10px 18px; border: 0; border-radius: 5px; font: inherit; font-size: 12px; font-weight: 600; line-height: 1.3; text-decoration: none; cursor: pointer; transition: background .15s; &:focus-visible { outline: 3px solid #d34b00; outline-offset: 3px; } }
+.primary { background: #ff5800; color: white; &:hover { background: #e74e00; } }
+.secondary { background: #f3f3f3; color: #333; &:hover { background: #e5e5e5; } &:disabled { cursor: wait; opacity: .6; } }
+.badge { color: #8a4b25; }
+.empty { padding: 30px 0; h2 { font-size: 22px; } p { margin-bottom: 22px; } }
+.error { color: #a32a16; margin-bottom: 18px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 640px) { .page { padding-top: 72px; } .container, .content { width: calc(100% - 40px); } .hero { padding: 32px 0 36px; h1 { font-size: 34px; } } .content { padding: 32px 0 48px; } .list { padding: 0 18px; } .row { align-items: flex-start; flex-direction: column; gap: 16px; padding: 22px 0; } .actions { width: 100%; } .primary, .secondary { min-height: 42px; } }

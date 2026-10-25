@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const result = await query(
-      `SELECT id, job_link, job_title, job_category, status, created_at
+      `SELECT id, job_link, job_title, job_category, status, created_at, delivery_status, resume_name
        FROM job_applications
        WHERE account_id = $1 AND job_link = $2`,
       [userId, jobLink],

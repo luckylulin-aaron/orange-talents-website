@@ -22,6 +22,8 @@ const Header = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false)
 
   const [user, setUser] = useState<{ id: number; email: string; name: string | null } | null>(null)
+  const [canManageJobs,setCanManageJobs] = useState(false)
+  useEffect(()=>{fetch('/api/admin/job-access').then(r=>r.ok?r.json():null).then(d=>setCanManageJobs(Boolean(d?.canManageJobs))).catch(()=>{})},[])
   const isLoggedIn = Boolean(user)
 
   const handleToggleMenu = () => setIsMenuOpen((previous) => !previous)
@@ -39,6 +41,7 @@ const Header = () => {
   const handleLogout = async () => {
     await fetch('/api/auth/logout', { method: 'POST' }).catch(() => null)
     setUser(null)
+    setCanManageJobs(false)
     handleCloseAccount()
   }
 
@@ -84,6 +87,7 @@ const Header = () => {
               <Link href="/account/saved-jobs" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
                 Saved jobs
               </Link>
+              {canManageJobs&&<Link href="/admin/jobs" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>Manage jobs</Link>}
               <div className={styles.accountDivider} />
               <Link href="/account/settings" className={styles.accountLinkSecondary} onClick={handleCloseAccount}>
                 Account settings

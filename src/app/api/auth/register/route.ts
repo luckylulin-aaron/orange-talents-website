@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { canManageJobs } from '@/lib/access'
 import { query } from '@/lib/db'
 import { hashPassword, signToken } from '@/lib/auth'
 
@@ -6,11 +7,13 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password, name } = await request.json()
 
-    if (!email || !password) {
+    if (typeof email !== 'string' || typeof password !== 'string' || !email.trim() || !password) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 })
     }
 
-    const existing = await query('SELECT id FROM accounts WHERE email = $1', [email])
+    // Staff access is provisioned privately; public registration must not claim a reserved staff address.
+    if (canManageJobs(email.trim())) return NextResponse.json({ error: 'Please contact your administrator to access this staff account.' }, { status: 403 })
+    const existing = await query('SELECT id FROM accounts WHERE LOWER(email) = LOWER($1)', [email.trim()])
     if (existing.rowCount && existing.rowCount > 0) {
       return NextResponse.json({ error: 'Account with this email already exists.' }, { status: 409 })
     }
@@ -21,7 +24,7 @@ export async function POST(request: NextRequest) {
       `INSERT INTO accounts (email, password_hash, name)
        VALUES ($1, $2, $3)
        RETURNING id, email`,
-      [email, passwordHash, name ?? null],
+      [email.trim().toLowerCase(), passwordHash, name ?? null],
     )
 
     const user = result.rows[0]

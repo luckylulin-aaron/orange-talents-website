@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header/Header'
@@ -9,6 +9,8 @@ import styles from '../auth.module.scss'
 
 export default function SignInPage() {
   const router = useRouter()
+  const [signupHref,setSignupHref] = useState('/account/sign-up')
+  useEffect(()=>{const next=new URLSearchParams(window.location.search).get('next') || '';if(/^\/jobs\/[a-z0-9-]+$/.test(next)||next==='/admin/jobs'||next==='/account/saved-jobs')setSignupHref('/account/sign-up?next='+encodeURIComponent(next))},[])
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -31,7 +33,8 @@ export default function SignInPage() {
         throw new Error(data?.error || 'Sign in failed.')
       }
 
-      router.push('/account')
+      const next = new URLSearchParams(window.location.search).get('next') || ''
+      router.push(/^\/jobs\/[a-z0-9-]+$/.test(next) || next === '/admin/jobs' || next === '/account/saved-jobs' ? next : '/account')
       router.refresh()
     } catch (err: any) {
       setError(err?.message || 'Sign in failed.')
@@ -89,7 +92,7 @@ export default function SignInPage() {
 
               <p className={styles.hintRow}>
                 New here?{' '}
-                <Link className={styles.hintLink} href="/account/sign-up">
+                <Link className={styles.hintLink} href={signupHref}>
                   Create an account
                 </Link>
               </p>

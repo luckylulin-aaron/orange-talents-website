@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 
-import jobsData from '@/data/jobs.json'
+import { listPublishedJobs } from '@/lib/jobs'
+export const dynamic = 'force-dynamic'
 import insightsData from '@/data/insights.json'
 
 const siteUrlString = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
@@ -22,7 +23,7 @@ function resolveUrl(path: string) {
   return `${baseUrl}${path}`
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     '/',
     '/jobs',
@@ -39,9 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/insights',
   ]
 
-  const jobLinks = Array.from(
-    new Set([...jobsData.featuredJobs, ...jobsData.heroJobs].map((j: any) => j.link)),
-  )
+  const jobLinks = (await listPublishedJobs()).map(job=>'/jobs/'+job.slug)
 
   const insightLinks = insightsData.all.map((item: any) => `/insights/${item.id}`)
 

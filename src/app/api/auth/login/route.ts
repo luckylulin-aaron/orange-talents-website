@@ -6,13 +6,14 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
 
-    if (!email || !password) {
+    if (typeof email !== 'string' || !email.trim() || typeof password !== 'string' || !password) {
       return NextResponse.json({ error: 'Email and password are required.' }, { status: 400 })
     }
 
-    const result = await query('SELECT id, email, password_hash FROM accounts WHERE email = $1', [email])
+    const result = await query('SELECT id, email, password_hash FROM accounts WHERE LOWER(email) = LOWER($1)', [email.trim()])
 
-    if (result.rowCount === 0) {
+    // Ambiguous legacy addresses must be resolved by an administrator, not picked arbitrarily.
+    if (result.rowCount !== 1) {
       return NextResponse.json({ error: 'Invalid email or password.' }, { status: 401 })
     }
 

@@ -6,6 +6,8 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 
 export default function AccountHomePage() {
+  const [canManageJobs,setCanManageJobs] = useState(false)
+  useEffect(()=>{fetch('/api/admin/job-access').then(r=>r.ok?r.json():null).then(d=>setCanManageJobs(Boolean(d?.canManageJobs))).catch(()=>{})},[])
   const [user, setUser] = useState<{ id: number; email: string; name: string | null } | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -31,7 +33,8 @@ export default function AccountHomePage() {
     <div className="site">
       <Header />
       <main className="main">
-        <section className="container block-container mb-l">
+        <section className="container block-container mb-l" style={{paddingTop:120}}>
+          {canManageJobs&&<p><Link href="/admin/jobs">Manage jobs →</Link></p>}
           <h1 className="headline-1 mb-m">My Account</h1>
           {isLoading ? (
             <p className="paragraph-2">Loading…</p>

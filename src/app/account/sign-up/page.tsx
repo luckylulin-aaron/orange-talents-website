@@ -32,7 +32,8 @@ export default function SignUpPage() {
         throw new Error(data?.error || 'Registration failed.')
       }
 
-      router.push('/account')
+      const next = new URLSearchParams(window.location.search).get('next') || ''
+      router.push(/^\/jobs\/[a-z0-9-]+$/.test(next) || next === '/admin/jobs' || next === '/account/saved-jobs' ? next : '/account')
       router.refresh()
     } catch (err: any) {
       setError(err?.message || 'Registration failed.')

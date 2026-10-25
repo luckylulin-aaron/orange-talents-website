@@ -12,7 +12,7 @@ if (!connectionString) {
   console.warn('DATABASE_URL is not set. API routes that depend on the database will fail.')
 }
 
-const pool =
+export const pool =
   global.pgPool ??
   new Pool({
     connectionString,
@@ -27,3 +27,10 @@ export async function query(text: string, params?: any[]) {
   return result
 }
 
+
+export async function transaction<T>(work: (client: import('pg').PoolClient) => Promise<T>): Promise<T> {
+  const client = await pool.connect()
+  try { await client.query('BEGIN'); const result = await work(client); await client.query('COMMIT'); return result }
+  catch (error) { await client.query('ROLLBACK'); throw error }
+  finally { client.release() }
+}

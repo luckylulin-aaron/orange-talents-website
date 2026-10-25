@@ -2,7 +2,8 @@ import Header from '@/components/Header/Header'
 import HeroSearch from '@/components/HeroSearch/HeroSearch'
 import Footer from '@/components/Footer/Footer'
 import Link from 'next/link'
-import jobsData from '@/data/jobs.json'
+import { listPublishedJobs } from '@/lib/jobs'
+export const dynamic = 'force-dynamic'
 import SaveJobButton from '@/components/SaveJobButton/SaveJobButton'
 
 function normalize(text: string) {
@@ -15,16 +16,14 @@ type JobsPageProps = {
   }
 }
 
-export default function JobsPage({ searchParams }: JobsPageProps) {
+export default async function JobsPage({ searchParams }: JobsPageProps) {
   const rawQuery = searchParams?.query ?? ''
   const query = normalize(rawQuery)
 
-  const allJobs = [...jobsData.featuredJobs, ...jobsData.heroJobs].filter(
-    (job, index, arr) => arr.findIndex((other) => other.link === job.link) === index,
-  )
+  const allJobs = (await listPublishedJobs()).map(job => ({...job, link:'/jobs/'+job.slug}))
 
   const filtered = query.length
-    ? allJobs.filter((job) => normalize(`${job.title} ${job.category}`).includes(query))
+    ? allJobs.filter((job) => normalize(`${job.title} ${job.category} ${job.location}`).includes(query))
     : allJobs
 
   return (

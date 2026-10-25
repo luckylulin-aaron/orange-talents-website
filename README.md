@@ -353,3 +353,8 @@ npm run dev
 ---
 
 **Made with ❤️ for learning purposes**
+
+
+## 岗位与简历投递
+
+新增岗位管理、简历上传和 Saved Jobs。配置、数据库迁移、SMTP 定时重试及上线验收见 [部署说明](docs/岗位功能部署说明.md)。部署前必须执行数据库迁移并配置 SMTP。
