@@ -1,3 +1,4 @@
+import { assertSameOrigin } from '../src/lib/access'
 import { GET as savedList, POST as saveJob, DELETE as removeJob } from '../src/app/api/saved-jobs/route'
 import { beforeAll,beforeEach,afterAll,describe,it,expect,vi } from 'vitest'
 import { readFile } from 'node:fs/promises'
@@ -173,5 +174,16 @@ describe('Sign-in compatibility',()=>{
  })
  it('rejects invalid email types without throwing a server error',async()=>{
   expect((await login(request('/api/auth/login','POST',undefined,JSON.stringify({email:42,password:'test-password'}),'application/json'))).status).toBe(400)
+ })
+})
+
+describe('configured website origins',()=>{
+ it('allows an explicitly configured alternate domain but rejects other origins',()=>{
+  const previous=process.env.ALLOWED_ORIGINS
+  try {
+   process.env.ALLOWED_ORIGINS='https://www.orangetalents.net'
+   expect(()=>assertSameOrigin(request('/api/saved-jobs','POST',undefined,undefined,undefined,'https://www.orangetalents.net'))).not.toThrow()
+   expect(()=>assertSameOrigin(request('/api/saved-jobs','POST',undefined,undefined,undefined,'https://www.orangetalents.net.evil.test'))).toThrow('Invalid request origin.')
+  } finally { if(previous===undefined)delete process.env.ALLOWED_ORIGINS;else process.env.ALLOWED_ORIGINS=previous }
  })
 })

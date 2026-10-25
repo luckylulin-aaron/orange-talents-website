@@ -26,8 +26,9 @@ export async function requireJobEditor(request: NextRequest) {
 }
 export function assertSameOrigin(request: NextRequest) {
   const origin = request.headers.get('origin')
-  const allowed = process.env.NEXT_PUBLIC_SITE_URL || request.nextUrl.origin
-  if (!origin || origin !== new URL(allowed).origin) throw new HttpError(403, 'Invalid request origin.')
+  const configured = [process.env.NEXT_PUBLIC_SITE_URL, ...(process.env.ALLOWED_ORIGINS || '').split(',')].map(value => value?.trim()).filter((value): value is string => Boolean(value))
+  const allowed = configured.length ? configured.map(value => new URL(value).origin) : [request.nextUrl.origin]
+  if (!origin || !allowed.includes(origin)) throw new HttpError(403, 'Invalid request origin.')
 }
 export function apiError(error: unknown) {
   return Response.json({ error: error instanceof HttpError ? error.message : 'Unable to complete the request. Please try again.' },
